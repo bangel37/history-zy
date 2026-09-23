@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>历史中考 · 定位记忆助手</title>
+<title>历史中考 · 定位记忆助手 V2</title>
 <style>
 :root{
   --bg:#F6F3EC; --card:#FFFFFF; --ink:#262220; --sub:#7A6F65;
@@ -34,8 +34,8 @@ header .sub{font-size:12px;opacity:.85;margin-top:2px}
 .badges{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 .badge{background:rgba(255,255,255,.16);border-radius:20px;padding:3px 11px;font-size:12.5px}
 nav{display:flex;gap:6px;margin:12px 0 8px;flex-wrap:wrap}
-nav button{flex:1;min-width:64px;background:var(--card);border:1px solid var(--line);
-  border-radius:10px;padding:9px 4px;font-size:14px;color:var(--sub);cursor:pointer;font-family:inherit}
+nav button{flex:1;min-width:58px;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:9px 4px;font-size:13.5px;color:var(--sub);cursor:pointer;font-family:inherit}
 nav button.on{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
 .filters{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 select{font-family:inherit;font-size:14px;padding:7px 8px;border:1px solid var(--line);
@@ -43,7 +43,7 @@ select{font-family:inherit;font-size:14px;padding:7px 8px;border:1px solid var(-
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;
   box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .hidden{display:none!important}
-.big{font-size:26px;font-weight:600;letter-spacing:1px;margin:6px 0 14px;word-break:break-word}
+.big{font-size:25px;font-weight:600;letter-spacing:.5px;margin:6px 0 14px;word-break:break-word}
 .qhint{color:var(--sub);font-size:14px}
 .path{color:var(--blue);font-size:14px;font-weight:600;line-height:1.8}
 .path .u{color:var(--sub);font-weight:400}
@@ -58,12 +58,12 @@ select{font-family:inherit;font-size:14px;padding:7px 8px;border:1px solid var(-
 .btn.sel{background:var(--sel);border-color:var(--blue);color:var(--blue)}
 .btn.correct{background:var(--green-soft);border-color:var(--green);color:var(--green);font-weight:600}
 .btn.wrong{background:var(--warn);border-color:var(--warn-line);color:var(--warn-ink);text-decoration:line-through}
+.btn.small{width:auto;display:inline-block;padding:8px 14px;font-size:14px}
 .row{display:flex;gap:9px;margin-top:14px}
 .row .btn{margin-top:0;text-align:center}
 .g0{background:var(--warn);border-color:var(--warn-line);color:var(--red)}
 .g1{background:var(--amber);border-color:var(--amber-line);color:var(--amber-ink)}
 .g2{background:var(--green-soft);border-color:var(--green);color:var(--green)}
-.g3{background:var(--blue-soft);border-color:var(--blue);color:var(--blue)}
 .primary{background:var(--red);border-color:var(--red);color:#fff;text-align:center;font-weight:600}
 .meta{display:flex;justify-content:space-between;color:var(--sub);font-size:13px;margin-bottom:8px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px}
@@ -85,9 +85,29 @@ input[type=search]{width:100%;font-family:inherit;font-size:16px;padding:11px 12
 .hit{padding:10px 0;border-bottom:1px solid var(--line)}
 .hit .t{font-weight:600}
 .weak{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px solid var(--line)}
-.weak span:last-child{color:var(--red);font-weight:600}
+.weak span:last-child{color:var(--red);font-weight:600;white-space:nowrap;margin-left:8px}
 .foot{color:var(--sub);font-size:12.5px;text-align:center;margin:26px 0 10px}
 .kbd{display:inline-block;background:var(--bar);border-radius:4px;padding:0 5px;font-size:12px}
+/* ---- V2 新增 ---- */
+.mchips{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.mchip{border-radius:20px;padding:3px 12px;font-size:13px;border:1px solid var(--line);background:var(--chip);color:var(--sub)}
+.mchip.done{background:var(--green-soft);border-color:var(--green);color:var(--green);font-weight:600}
+.mchip.wip{background:var(--amber);border-color:var(--amber-line);color:var(--amber-ink)}
+.mbar{margin-bottom:10px}
+.mbar .lbl{display:flex;justify-content:space-between;font-size:14px}
+.mbar .lbl span:last-child{color:var(--sub)}
+.ltag{display:inline-block;border-radius:5px;padding:0 6px;font-size:11.5px;margin-right:6px;vertical-align:1px}
+.ltag.l1{background:var(--blue-soft);color:var(--blue);border:1px solid var(--blue)}
+.ltag.l2{background:var(--amber);color:var(--amber-ink);border:1px solid var(--amber-line)}
+.ltag.l3{background:var(--red-soft);color:var(--red);border:1px solid var(--red)}
+.lockbar{background:var(--amber);border:1px solid var(--amber-line);color:var(--amber-ink);
+  border-radius:10px;padding:9px 13px;font-size:13.5px;margin-bottom:10px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.lockbar button{background:none;border:none;color:inherit;cursor:pointer;font-size:16px;font-family:inherit}
+.locked{position:relative}
+.locked>*:not(.lockmsg){display:none}
+.lockmsg{background:var(--card);border:1px dashed var(--amber-line);border-radius:12px;padding:22px 16px;text-align:center;color:var(--sub)}
+.simstep{display:flex;gap:8px;align-items:center;margin-top:6px;font-size:13.5px;color:var(--sub)}
+.simstep b{color:var(--ink)}
 #printArea{display:none}
 @media print{
   body{background:#fff}
@@ -102,8 +122,8 @@ input[type=search]{width:100%;font-family:inherit;font-size:16px;padding:11px 12
 <header>
   <div class="wrap" style="position:relative">
     <button id="themeBtn" style="position:absolute;right:0;top:0;background:rgba(255,255,255,.16);border:none;color:#fff;border-radius:9px;padding:5px 10px;cursor:pointer;font-size:13.5px;font-family:inherit">🌙 深色</button>
-    <h1>历史中考 · 定位记忆助手</h1>
-    <div class="sub">把「知道它在哪一课」练成条件反射</div>
+    <h1>历史中考 · 定位记忆助手 <span style="font-size:12px;opacity:.8">V2</span></h1>
+    <div class="sub">先搭骨架，再填血肉，最后挂细节</div>
     <div class="badges" id="badges"></div>
   </div>
 </header>
@@ -111,8 +131,10 @@ input[type=search]{width:100%;font-family:inherit;font-size:16px;padding:11px 12
 <div class="wrap">
   <nav>
     <button data-v="study" class="on">闪卡</button>
+    <button data-v="l1">L1·册</button>
+    <button data-v="l2">L2·单元</button>
     <button data-v="locate">定位</button>
-    <button data-v="group">归类</button>
+    <button data-v="sim">模拟</button>
     <button data-v="find">检索</button>
     <button data-v="stat">统计</button>
   </nav>
@@ -136,70 +158,98 @@ input[type=search]{width:100%;font-family:inherit;font-size:16px;padding:11px 12
       <button class="btn g2" data-g="2">记住<br><small>拉长间隔</small></button>
     </div>
     <div class="row"><button class="btn primary" id="sFlip">翻面看答案（空格）</button></div>
-    <div class="note">先盯着上面的词，<b>在脑子里说出它在第几册第几单元</b>，再翻面。说不出来就按「忘了」——这一下最值钱。</div>
+    <div class="note">先盯着上面的词，<b>在脑子里说出它的位置</b>，再翻面。说不出来就按「忘了」——这一下最值钱。闪卡会按三层掌握度自动混入单元卡和课卡。</div>
   </section>
 
-  <!-- 定位 -->
+  <!-- L1 训练：单元 → 册 -->
+  <section id="v-l1" class="hidden">
+    <div class="meta"><span id="aProgress"></span><span id="aScore"></span></div>
+    <div class="card" id="aCard"></div>
+    <div class="row" id="aNextRow" style="display:none"><button class="btn primary" id="aNext">下一题</button></div>
+    <div class="row" id="aSelfRow" style="display:none">
+      <button class="btn g2" id="aSelfOk">✓ 全会了</button>
+      <button class="btn g0" id="aSelfNo">有遗漏</button>
+    </div>
+    <div class="row"><button class="btn primary" id="aStart">正考一组（10题）</button></div>
+    <div class="row"><button class="btn" id="aRecall">反考：回忆一册的单元清单</button></div>
+  </section>
+
+  <!-- L2 训练：课 → 单元 -->
+  <section id="v-l2" class="hidden">
+    <div class="meta"><span id="bProgress"></span><span id="bScore"></span></div>
+    <div class="card" id="bCard"></div>
+    <div class="row" id="bNextRow" style="display:none"><button class="btn primary" id="bNext">下一题</button></div>
+    <div class="row" id="bSelfRow" style="display:none">
+      <button class="btn g2" id="bSelfOk">✓ 全会了</button>
+      <button class="btn g0" id="bSelfNo">有遗漏</button>
+    </div>
+    <div class="row"><button class="btn primary" id="bStart">正考一组（10题）</button></div>
+    <div class="row"><button class="btn" id="bRecall">反考：回忆一个单元的课清单</button></div>
+  </section>
+
+  <!-- L3 定位：关键词 → 课（双向混合） -->
   <section id="v-locate" class="hidden">
     <div class="meta"><span id="lProgress"></span><span id="lScore"></span></div>
-    <div class="card">
-      <div class="qhint">这个考点在——</div>
-      <div class="big" id="lQ">—</div>
-      <div id="lOpts"></div>
-      <div id="lFB"></div>
-    </div>
-    <div class="row"><button class="btn primary" id="lNext" style="display:none">下一题</button></div>
-    <div class="row"><button class="btn" id="lStart">开始一组（10题）</button></div>
+    <div class="card" id="lCard"></div>
+    <div class="row" id="lNextRow" style="display:none"><button class="btn primary" id="lNext">下一题</button></div>
+    <div class="row" id="lSubmitRow" style="display:none"><button class="btn primary" id="lSubmit">提交（<span id="lSelN">0</span>）</button></div>
+    <div class="row"><button class="btn" id="lStart">开始一组（10题，定位+回忆混合）</button></div>
   </section>
 
-  <!-- 归类 -->
-  <section id="v-group" class="hidden">
-    <div class="meta"><span id="gProgress"></span><span id="gScore"></span></div>
-    <div class="card">
-      <div class="qhint">下面哪些考点属于——</div>
-      <div class="path" id="gQ" style="margin:8px 0 14px">—</div>
-      <div id="gOpts"></div>
-      <div id="gFB"></div>
-    </div>
-    <div class="row"><button class="btn" id="gSubmit" style="display:none">提交（<span id="gSel">0</span>）</button></div>
-    <div class="row"><button class="btn primary" id="gNext" style="display:none">下一课</button></div>
-    <div class="row"><button class="btn" id="gStart">开始一组（8课）</button></div>
+  <!-- 综合模拟 -->
+  <section id="v-sim" class="hidden">
+    <div class="meta"><span id="mProgress"></span><span id="mScore"></span></div>
+    <div class="card" id="mCard"></div>
+    <div class="row"><button class="btn" id="mStart">开始模拟（10题，全程计时）</button></div>
+    <div class="note">模拟考试的完整动作：看到一个关键词，依次选出<b>册 → 单元 → 课</b>。计时不在答题时显示，做完才公布——别慌，练的就是这条路径。</div>
   </section>
 
   <!-- 检索 -->
   <section id="v-find" class="hidden">
-    <input type="search" id="fq" placeholder="搜考点 / 人物 / 事件，比如「商鞅」「南京条约」">
+    <input type="search" id="fq" placeholder="搜考点 / 人物 / 事件 / 课标题，比如「商鞅」「南京条约」">
     <div id="fRes" style="margin-top:12px"></div>
     <div class="card" style="margin-top:14px" id="fTree"></div>
   </section>
 
   <!-- 统计 -->
   <section id="v-stat" class="hidden">
-    <div class="stats" id="stNums"></div>
+    <div class="mchips" id="stChips"></div>
     <div class="card">
-      <b>各册掌握度</b>
+      <b>三层掌握度</b>
+      <div id="stBars" style="margin-top:12px"></div>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <b>各册掌握度（L3 关键词）</b>
       <div id="stBooks" style="margin-top:10px"></div>
     </div>
     <div class="card" style="margin-top:12px">
-      <b>最需要补的单元</b>
+      <b>最需要补的单元 TOP8（三层聚合）</b>
       <div id="stWeak" style="margin-top:6px"></div>
     </div>
     <div class="card" style="margin-top:12px">
-      <b>错得最多的考点 TOP15</b>
+      <b>错得最多 TOP15</b>
       <div id="stLapse" style="margin-top:6px"></div>
     </div>
     <div class="card" style="margin-top:12px">
       <b>错题重练</b>
-      <div style="margin-top:8px;color:var(--sub);font-size:13.5px">答错的考点会自动进错题本，在闪卡里答对（按「记住」）后自动移出。</div>
+      <div style="margin-top:8px;color:var(--sub);font-size:13.5px">答错的考点自动进错题本，闪卡里按「记住」后自动移出。</div>
       <div class="row"><button class="btn primary" id="btnError">错题重练（<span id="errN">0</span>）</button></div>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <b>家长抽查</b>
+      <div id="auditInfo" style="margin-top:8px;color:var(--sub);font-size:13.5px"></div>
+      <div id="auditPanel" style="margin-top:10px"></div>
+      <div class="row"><button class="btn" id="btnAudit">开始抽查（5条）</button></div>
     </div>
     <div class="card" style="margin-top:12px">
       <b>设置</b>
       <div style="margin-top:10px;display:flex;gap:9px;align-items:center;flex-wrap:wrap">
         <span style="font-size:14px;color:var(--sub)">每日新考点上限</span>
-        <select id="setNew">
-          <option>10</option><option>15</option><option>20</option><option>30</option><option>50</option>
-        </select>
+        <select id="setNew"><option>10</option><option>15</option><option>20</option><option>30</option><option>50</option></select>
+      </div>
+      <div style="margin-top:10px;display:flex;gap:9px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:14px;color:var(--sub)">阶梯解锁（L1≥90% 才解锁 L2，L2≥90% 才解锁定位/模拟）</span>
+        <select id="setStrict"><option value="0">宽松模式（只建议）</option><option value="1">严格模式（锁定）</option></select>
       </div>
       <div class="row">
         <button class="btn" id="btnExport">导出进度</button>
@@ -208,68 +258,115 @@ input[type=search]{width:100%;font-family:inherit;font-size:16px;padding:11px 12
       <div class="row"><button class="btn" id="btnReset" style="color:var(--red)">清空全部进度</button></div>
       <input type="file" id="fileIn" accept="application/json" style="display:none">
     </div>
-    <div class="note">进度只保存在这台设备的浏览器里（localStorage）。换设备或清缓存前，记得先「导出进度」。</div>
+    <div class="note">进度只保存在这台设备的浏览器里（localStorage）。换设备或清缓存前，记得先「导出进度」。V1 老进度会自动迁移，不会丢。</div>
   </section>
 
-  <div class="foot">共 <span id="totN"></span> 个考点 · 数据来自老师下发的目录提纲对照表</div>
+  <div class="foot">4 册 · 21 单元 · 85 课 · <span id="totN"></span> 个考点 · 数据来自 20260923 版提纲</div>
 </div>
 
 <div id="printArea"></div>
 
 <script>
-const DATA = [{"id": "B1-L1", "book": 1, "unit": 1, "unitName": "史前时期", "unitTitle": "史前时期:原始社会与中华文明的起源", "lesson": 1, "items": ["元谋人", "北京人", "山顶洞人", "旧石器时代", "打制石器", "化石", "用火"]}, {"id": "B1-L2", "book": 1, "unit": 1, "unitName": "史前时期", "unitTitle": "史前时期:原始社会与中华文明的起源", "lesson": 2, "items": ["新石器时代", "河姆渡人", "水稻", "干栏式建筑", "仰韶文化", "半坡人", "粟", "半地穴式房屋", "贫富分化", "大汶口文化"]}, {"id": "B1-L3", "book": 1, "unit": 1, "unitName": "史前时期", "unitTitle": "史前时期:原始社会与中华文明的起源", "lesson": 3, "items": ["早期国家", "文明", "良渚遗址", "陶寺遗址", "多元一体", "炎帝", "黄帝", "大禹治水", "禅让制"]}, {"id": "B1-L4", "book": 1, "unit": 2, "unitName": "夏商周时期", "unitTitle": "夏商周时期:奴隶制王朝的更替和向封建社会的过渡", "lesson": 4, "items": ["世袭制(公天下变家天下)", "盘庚迁殷", "牧野之战", "周分封制", "国人暴动"]}, {"id": "B1-L5", "book": 1, "unit": 2, "unitName": "夏商周时期", "unitTitle": "夏商周时期:奴隶制王朝的更替和向封建社会的过渡", "lesson": 5, "items": ["铁制农具", "牛耕", "王室衰微", "诸侯争霸"]}, {"id": "B1-L6", "book": 1, "unit": 2, "unitName": "夏商周时期", "unitTitle": "夏商周时期:奴隶制王朝的更替和向封建社会的过渡", "lesson": 6, "items": ["兼并战争", "战国七雄", "商鞅变法", "都江堰"]}, {"id": "B1-L7", "book": 1, "unit": 2, "unitName": "夏商周时期", "unitTitle": "夏商周时期:奴隶制王朝的更替和向封建社会的过渡", "lesson": 7, "items": ["儒家", "道家", "墨家", "法家", "百家争鸣"]}, {"id": "B1-L8", "book": 1, "unit": 2, "unitName": "夏商周时期", "unitTitle": "夏商周时期:奴隶制王朝的更替和向封建社会的过渡", "lesson": 8, "items": ["二十四节气", "神农尝百草", "扁鹊", "《黄帝内经》", "甲骨文", "金文", "青铜器", "三星堆", "《诗经》", "屈原", "楚辞"]}, {"id": "B1-L9", "book": 1, "unit": 3, "unitName": "秦汉时期", "unitTitle": "秦汉时期:统一多民族国家的建立与巩固", "lesson": 9, "items": ["秦灭六国", "三公九卿制", "郡县制", "中央集权制度", "小篆", "灵渠"]}, {"id": "B1-L10", "book": 1, "unit": 3, "unitName": "秦汉时期", "unitTitle": "秦汉时期:统一多民族国家的建立与巩固", "lesson": 10, "items": ["秦的暴政", "焚书坑儒", "陈胜吴广起义", "巨鹿之战"]}, {"id": "B1-L11", "book": 1, "unit": 3, "unitName": "秦汉时期", "unitTitle": "秦汉时期:统一多民族国家的建立与巩固", "lesson": 11, "items": ["楚汉之争", "休养生息", "轻徭薄赋", "和亲", "文景之治"]}, {"id": "B1-L12", "book": 1, "unit": 3, "unitName": "秦汉时期", "unitTitle": "秦汉时期:统一多民族国家的建立与巩固", "lesson": 12, "items": ["推恩令", "耧车", "尊崇儒术", "北击匈奴", "卫青霍去病", "河西四郡", "刺史制度", "察举制"]}, {"id": "B1-L13", "book": 1, "unit": 3, "unitName": "秦汉时期", "unitTitle": "秦汉时期:统一多民族国家的建立与巩固", "lesson": 13, "items": ["光武中兴", "外戚宦官交替专权", "地方豪强割据", "黄巾起义"]}, {"id": "B1-L14", "book": 1, "unit": 3, "unitName": "秦汉时期", "unitTitle": "秦汉时期:统一多民族国家的建立与巩固", "lesson": 14, "items": ["张骞", "丝绸之路", "西域都护府", "甘英", "班超班勇"]}, {"id": "B1-L15", "book": 1, "unit": 3, "unitName": "秦汉时期", "unitTitle": "秦汉时期:统一多民族国家的建立与巩固", "lesson": 15, "items": ["造纸术", "张仲景", "华佗", "《九章算术》《汜胜之书》", "司马迁《史记》", "班固《汉书》", "道教", "佛教", "汉赋", "乐府诗"]}, {"id": "B1-L16", "book": 1, "unit": 4, "unitName": "三国两晋南北朝时期", "unitTitle": "三国两晋南北朝时期:政权分立与民族交融", "lesson": 16, "items": ["三国鼎立", "官渡之战", "赤壁之战", "翻车"]}, {"id": "B1-L17", "book": 1, "unit": 4, "unitName": "三国两晋南北朝时期", "unitTitle": "三国两晋南北朝时期:政权分立与民族交融", "lesson": 17, "items": ["八王之乱", "北方游牧民族内迁"]}, {"id": "B1-L18", "book": 1, "unit": 4, "unitName": "三国两晋南北朝时期", "unitTitle": "三国两晋南北朝时期:政权分立与民族交融", "lesson": 18, "items": ["王与马共天下", "祖逖北伐", "南朝", "江南地区的开发"]}, {"id": "B1-L19", "book": 1, "unit": 4, "unitName": "三国两晋南北朝时期", "unitTitle": "三国两晋南北朝时期:政权分立与民族交融", "lesson": 19, "items": ["淝水之战", "北魏孝文帝改革", "六镇兵变", "北方地区的民族交融"]}, {"id": "B1-L20", "book": 1, "unit": 4, "unitName": "三国两晋南北朝时期", "unitTitle": "三国两晋南北朝时期:政权分立与民族交融", "lesson": 20, "items": ["贾思勰《齐民要术》", "祖冲之“圆周率”", "书法:钟繇", "王羲之《兰亭集序》", "顾恺之《女史箴图》", "云冈石窟", "龙门石窟", "曹操父子建安文学", "陶渊明", "郦道元《水经注》"]}, {"id": "B2-L1", "book": 2, "unit": 1, "unitName": "隋唐时期", "unitTitle": "隋唐时期:繁荣与开放的时代", "lesson": 1, "items": ["隋的统一", "开通大运河", "创立科举制", "隋朝速亡"]}, {"id": "B2-L2", "book": 2, "unit": 1, "unitName": "隋唐时期", "unitTitle": "隋唐时期:繁荣与开放的时代", "lesson": 2, "items": ["贞观之治", "房谋杜断", "魏征", "武则天", "开创殿试"]}, {"id": "B2-L3", "book": 2, "unit": 1, "unitName": "隋唐时期", "unitTitle": "隋唐时期:繁荣与开放的时代", "lesson": 3, "items": ["开元盛世", "曲辕犁", "筒车", "陆羽", "越青邢白唐三彩", "草市", "坊市制度"]}, {"id": "B2-L4", "book": 2, "unit": 1, "unitName": "隋唐时期", "unitTitle": "隋唐时期:繁荣与开放的时代", "lesson": 4, "items": ["安史之乱", "外重内轻格局", "藩镇割据", "王仙芝", "黄巢起义", "五代十国", "周世宗改革"]}, {"id": "B2-L5", "book": 2, "unit": 1, "unitName": "隋唐时期", "unitTitle": "隋唐时期:繁荣与开放的时代", "lesson": 5, "items": ["文成公主入藏", "唐蕃会盟", "灭突厥", "回鹘(回纥)", "渤海", "南诏"]}, {"id": "B2-L6", "book": 2, "unit": 1, "unitName": "隋唐时期", "unitTitle": "隋唐时期:繁荣与开放的时代", "lesson": 6, "items": ["遣隋使和遣唐使", "阿倍仲麻吕", "鸿胪寺", "鉴真东渡", "玄奘西行", "东罗马", "大食", "新罗"]}, {"id": "B2-L7", "book": 2, "unit": 1, "unitName": "隋唐时期", "unitTitle": "隋唐时期:繁荣与开放的时代", "lesson": 7, "items": ["雕版印刷术", "僧一行", "孙思邈", "韩愈", "柳宗元", "李白", "杜甫", "白居易", "颜真卿", "柳公权", "阎立本", "吴道子", "敦煌莫高窟", "赵州桥"]}, {"id": "B2-L8", "book": 2, "unit": 2, "unitName": "辽宋夏金元时期", "unitTitle": "辽宋夏金元时期:民族关系发展和社会变化", "lesson": 8, "items": ["陈桥兵变", "杯酒释兵权", "通判", "加强中央集权", "发展科举制", "崇文抑武", "王安石变法"]}, {"id": "B2-L9", "book": 2, "unit": 2, "unitName": "辽宋夏金元时期", "unitTitle": "辽宋夏金元时期:民族关系发展和社会变化", "lesson": 9, "items": ["辽契丹耶律阿保机", "西夏党项元昊", "澶渊之盟", "宋夏和谈", "互市"]}, {"id": "B2-L10", "book": 2, "unit": 2, "unitName": "辽宋夏金元时期", "unitTitle": "辽宋夏金元时期:民族关系发展和社会变化", "lesson": 10, "items": ["金女真完颜阿骨打", "靖康之变", "岳飞抗金", "南宋偏安"]}, {"id": "B2-L11", "book": 2, "unit": 2, "unitName": "辽宋夏金元时期", "unitTitle": "辽宋夏金元时期:民族关系发展和社会变化", "lesson": 11, "items": ["成吉思汗", "忽必烈建元大都", "文天祥", "行省制", "宣政院", "元朝民族交融", "四等人制"]}, {"id": "B2-L12", "book": 2, "unit": 2, "unitName": "辽宋夏金元时期", "unitTitle": "辽宋夏金元时期:民族关系发展和社会变化", "lesson": 12, "items": ["越南占城稻", "苏湖熟天下足", "黄道婆", "元青花瓷", "交子", "清明上河图", "经济重心南移"]}, {"id": "B2-L13", "book": 2, "unit": 2, "unitName": "辽宋夏金元时期", "unitTitle": "辽宋夏金元时期:民族关系发展和社会变化", "lesson": 13, "items": ["海上丝绸之路", "市舶司", "马可波罗来华", "中外文化交往", "南海一号沉船"]}, {"id": "B2-L14", "book": 2, "unit": 2, "unitName": "辽宋夏金元时期", "unitTitle": "辽宋夏金元时期:民族关系发展和社会变化", "lesson": 14, "items": ["活字印刷术", "指南针", "火药", "四大发明", "沈括《梦溪笔谈》", "苏颂", "郭守敬", "程朱理学", "宋词", "苏轼", "李清照", "辛弃疾", "元曲", "司马光《资治通鉴》"]}, {"id": "B2-L15", "book": 2, "unit": 3, "unitName": "明清时期(至鸦片战争前)", "unitTitle": "明清时期(至鸦片战争前):统一多民族国家的巩固的发展", "lesson": 15, "items": ["靖难之役", "废丞相", "权分六部", "厂卫制度", "设三司", "八股文", "隆庆和议"]}, {"id": "B2-L16", "book": 2, "unit": 3, "unitName": "明清时期(至鸦片战争前)", "unitTitle": "明清时期(至鸦片战争前):统一多民族国家的巩固的发展", "lesson": 16, "items": ["郑和下西洋", "戚继光抗倭", "援朝战争", "葡萄牙人攫取在澳门的租住权"]}, {"id": "B2-L17", "book": 2, "unit": 3, "unitName": "明清时期(至鸦片战争前)", "unitTitle": "明清时期(至鸦片战争前):统一多民族国家的巩固的发展", "lesson": 17, "items": ["张居正改革", "李自成起义", "满洲兴起", "清军入关", "八旗制度"]}, {"id": "B2-L18", "book": 2, "unit": 3, "unitName": "明清时期(至鸦片战争前)", "unitTitle": "明清时期(至鸦片战争前):统一多民族国家的巩固的发展", "lesson": 18, "items": ["郑成功收复台湾", "达赖班禅", "金瓶掣签", "驻藏大臣", "平准噶尔", "平大小和卓叛乱", "土尔扈特部回归祖国", "雅克萨之战", "《尼布楚条约》"]}, {"id": "B2-L19", "book": 2, "unit": 3, "unitName": "明清时期(至鸦片战争前)", "unitTitle": "明清时期(至鸦片战争前):统一多民族国家的巩固的发展", "lesson": 19, "items": ["军机处", "奏折制度", "文字狱", "白莲教起义", "禁海令", "闭关政策", "广州十三行", "马戛尔尼使团来华"]}, {"id": "B2-L20", "book": 2, "unit": 3, "unitName": "明清时期(至鸦片战争前)", "unitTitle": "明清时期(至鸦片战争前):统一多民族国家的巩固的发展", "lesson": 20, "items": ["鱼鳞图册", "农产品商品化", "手工工场", "商帮", "摊丁入亩", "天下四聚"]}, {"id": "B2-L21", "book": 2, "unit": 3, "unitName": "明清时期(至鸦片战争前)", "unitTitle": "明清时期(至鸦片战争前):统一多民族国家的巩固的发展", "lesson": 21, "items": ["李时珍《本草纲目》", "徐光启《农政全书》", "宋应星《天工开物》", "明长城", "北京城", "王守仁", "黄宗羲", "顾炎武", "王夫之", "四大名著", "昆曲", "京剧", "四库全书"]}, {"id": "B3-L1", "book": 3, "unit": 1, "unitName": "中国开始沦为半殖民地半封建社会", "unitTitle": "中国开始沦为半殖民地半封建社会", "lesson": 1, "items": ["林则徐", "虎门销烟", "鸦片战争", "《南京条约》", "《望厦条约》", "《黄埔条约》"]}, {"id": "B3-L2", "book": 3, "unit": 1, "unitName": "中国开始沦为半殖民地半封建社会", "unitTitle": "中国开始沦为半殖民地半封建社会", "lesson": 2, "items": ["第二次鸦片战争", "《天津条约》", "火烧圆明园", "《北京条约》", "《瑷珲条约》"]}, {"id": "B3-L3", "book": 3, "unit": 1, "unitName": "中国开始沦为半殖民地半封建社会", "unitTitle": "中国开始沦为半殖民地半封建社会", "lesson": 3, "items": ["洪秀全", "金田起义", "太平天国运动", "《天朝田亩制度》", "《资政新篇》"]}, {"id": "B3-L4", "book": 3, "unit": 2, "unitName": "早期现代化的初步探索和民族危机加剧", "unitTitle": "早期现代化的初步探索和民族危机加剧", "lesson": 4, "items": ["洋务运动", "自强", "求富", "左宗棠收复新疆", "中法战争", "冯子材", "镇南关大捷"]}, {"id": "B3-L5", "book": 3, "unit": 2, "unitName": "早期现代化的初步探索和民族危机加剧", "unitTitle": "早期现代化的初步探索和民族危机加剧", "lesson": 5, "items": ["甲午战争", "丁汝昌", "《马关条约》", "赎辽费", "门户开放", "张謇", "实业救国"]}, {"id": "B3-L6", "book": 3, "unit": 2, "unitName": "早期现代化的初步探索和民族危机加剧", "unitTitle": "早期现代化的初步探索和民族危机加剧", "lesson": 6, "items": ["康有为", "公车上书", "百日维新(戊戌变法)", "《时务报》", "戊戌六君子"]}, {"id": "B3-L7", "book": 3, "unit": 2, "unitName": "早期现代化的初步探索和民族危机加剧", "unitTitle": "早期现代化的初步探索和民族危机加剧", "lesson": 7, "items": ["义和团运动", "八国联军侵华", "《辛丑条约》"]}, {"id": "B3-L8", "book": 3, "unit": 3, "unitName": "资产阶级民主革命与中华民国的建立", "unitTitle": "资产阶级民主革命与中华民国的建立", "lesson": 8, "items": ["孙中山", "兴中会", "同盟会", "《民报》", "三民主义", "广州起义", "黄兴", "黄花岗七十二烈士"]}, {"id": "B3-L9", "book": 3, "unit": 3, "unitName": "资产阶级民主革命与中华民国的建立", "unitTitle": "资产阶级民主革命与中华民国的建立", "lesson": 9, "items": ["武昌起义(辛亥革命)", "《中华民国临时约法》", "宋教仁", "国民党", "二次革命"]}, {"id": "B3-L10", "book": 3, "unit": 3, "unitName": "资产阶级民主革命与中华民国的建立", "unitTitle": "资产阶级民主革命与中华民国的建立", "lesson": 10, "items": ["袁世凯复辟帝制", "护国战争", "蔡锷", "军阀割据"]}, {"id": "B3-L11", "book": 3, "unit": 4, "unitName": "新民主主义革命兴起", "unitTitle": "新民主主义革命兴起", "lesson": 11, "items": ["陈独秀", "《青年杂志》(《新青年》)", "新文化运动", "民主与科学", "五四运动"]}, {"id": "B3-L12", "book": 3, "unit": 4, "unitName": "新民主主义革命兴起", "unitTitle": "新民主主义革命兴起", "lesson": 12, "items": ["李大钊", "《我的马克思主义观》", "中共一大", "中共二大", "京汉铁路大罢工"]}, {"id": "B3-L13", "book": 3, "unit": 5, "unitName": "从国共合作到农村革命根据地的建立", "unitTitle": "从国共合作到农村革命根据地的建立", "lesson": 13, "items": ["中共三大", "国民党一大", "新三民主义", "国共合作", "黄埔军校", "北伐", "叶挺独立团", "上海工人三次武装起义", "四一二反革命政变", "宁汉合流", "张学良改旗易帜"]}, {"id": "B3-L14", "book": 3, "unit": 5, "unitName": "从国共合作到农村革命根据地的建立", "unitTitle": "从国共合作到农村革命根据地的建立", "lesson": 14, "items": ["南昌起义", "八七会议", "秋收起义", "工农革命", "三湾改编", "井冈山会师", "井冈山根据地", "工农武装割据", "古田会议", "中华苏维埃第一次全国代表大会"]}, {"id": "B3-L15", "book": 3, "unit": 5, "unitName": "从国共合作到农村革命根据地的建立", "unitTitle": "从国共合作到农村革命根据地的建立", "lesson": 15, "items": ["五次反围剿", "红军长征", "遵义会议", "三人军事小组"]}, {"id": "B3-L16", "book": 3, "unit": 6, "unitName": "中华民族的抗日战争", "unitTitle": "中华民族的抗日战争", "lesson": 16, "items": ["九一八事变", "伪满洲国", "抗日义勇军", "东北抗日联军", "杨靖宇", "长城抗战", "一二九运动", "瓦窑堡会议", "西安事变", "抗日民族统一战线"]}, {"id": "B3-L17", "book": 3, "unit": 6, "unitName": "中华民族的抗日战争", "unitTitle": "中华民族的抗日战争", "lesson": 17, "items": ["七七事变", "第二次国共合作", "新四军与八路军", "淞沪会战", "南京大屠杀"]}, {"id": "B3-L18", "book": 3, "unit": 6, "unitName": "中华民族的抗日战争", "unitTitle": "中华民族的抗日战争", "lesson": 18, "items": ["平型关大捷", "台儿庄大捷", "武汉会战", "枣宜会战", "豫湘桂战役", "百团大战", "游击战", "皖南事变", "中国远征军入缅作战", "《开罗宣言》"]}, {"id": "B3-L19", "book": 3, "unit": 6, "unitName": "中华民族的抗日战争", "unitTitle": "中华民族的抗日战争", "lesson": 19, "items": ["《论持久战》", "中共七大", "《波茨坦公告》"]}, {"id": "B3-L20", "book": 3, "unit": 7, "unitName": "人民解放战争", "unitTitle": "人民解放战争", "lesson": 20, "items": ["重庆谈判", "双十协定", "解放战争", "刘胡兰"]}, {"id": "B3-L21", "book": 3, "unit": 7, "unitName": "人民解放战争", "unitTitle": "人民解放战争", "lesson": 21, "items": ["《中国土地法大纲》", "刘邓大军千里跃进大别山", "辽沈淮海平津三大战役", "渡江战役", "七届二中全会", "新民主主义革命胜利"]}, {"id": "B4-L1", "book": 4, "unit": 1, "unitName": "中华人民共和国成立和社会主义制度建立", "unitTitle": "中华人民共和国成立和社会主义制度建立", "lesson": 1, "items": ["中国人民政治协商会议", "《共同纲领》", "开国大典", "和平解放西藏"]}, {"id": "B4-L2", "book": 4, "unit": 1, "unitName": "中华人民共和国成立和社会主义制度建立", "unitTitle": "中华人民共和国成立和社会主义制度建立", "lesson": 2, "items": ["土地改革", "《中华人民共和国土地改革法》", "镇压反革命", "抗美援朝", "黄继光", "邱少云", "罗盛教", "杨根思", "上甘岭战役"]}, {"id": "B4-L3", "book": 4, "unit": 1, "unitName": "中华人民共和国成立和社会主义制度建立", "unitTitle": "中华人民共和国成立和社会主义制度建立", "lesson": 3, "items": ["过渡时期总路线", "一化三改(一化三改造)", "一五计划", "三大改造", "生产合作社", "人民代表大会制度", "社会主义制度建立"]}, {"id": "B4-L4", "book": 4, "unit": 1, "unitName": "中华人民共和国成立和社会主义制度建立", "unitTitle": "中华人民共和国成立和社会主义制度建立", "lesson": 4, "items": ["独立自主的和平外交政策", "和平共处五项原则", "亚非会议", "求同存异"]}, {"id": "B4-L5", "book": 4, "unit": 2, "unitName": "社会主义建设道路的探索", "unitTitle": "社会主义建设道路的探索", "lesson": 5, "items": ["《论十大关系》", "中共八大", "大跃进", "人民公社化运动", "文化大革命"]}, {"id": "B4-L6", "book": 4, "unit": 2, "unitName": "社会主义建设道路的探索", "unitTitle": "社会主义建设道路的探索", "lesson": 6, "items": ["武汉钢铁基地", "包头钢铁基地", "大庆油田", "兰新铁路", "兰青铁路", "成昆铁路", "第一颗原子弹", "氢弹", "人造地球卫星", "人工合成牛胰岛素", "屠呦呦青蒿素", "袁隆平杂交水稻", "民族区域自治制度", "钱学森", "邓稼先", "郭永怀", "王进喜", "焦裕禄"]}, {"id": "B4-L7", "book": 4, "unit": 2, "unitName": "社会主义建设道路的探索", "unitTitle": "社会主义建设道路的探索", "lesson": 7, "items": ["第一支海军部队(华东军区)", "导弹部队(第二炮兵部队)", "恢复联合国合法席位", "尼克松访华", "《中美联合公报》", "中日恢复邦交"]}, {"id": "B4-L8", "book": 4, "unit": 3, "unitName": "改革开放与中国特色社会主义的开创", "unitTitle": "改革开放与中国特色社会主义的开创", "lesson": 8, "items": ["《实践是检验真理的唯一标准》", "中共十一届三中全会"]}, {"id": "B4-L9", "book": 4, "unit": 3, "unitName": "改革开放与中国特色社会主义的开创", "unitTitle": "改革开放与中国特色社会主义的开创", "lesson": 9, "items": ["农村家庭联产承包责任制", "城市经济体制改革", "对外开放", "中美建交"]}, {"id": "B4-L10", "book": 4, "unit": 3, "unitName": "改革开放与中国特色社会主义的开创", "unitTitle": "改革开放与中国特色社会主义的开创", "lesson": 10, "items": ["中共十二大", "中国特色社会主义", "小康目标", "开放14个沿海城市", "沿海经济开放区(长三角珠三角闽三角)", "一国两制", "国防和军队现代化建设"]}, {"id": "B4-L11", "book": 4, "unit": 3, "unitName": "改革开放与中国特色社会主义的开创", "unitTitle": "改革开放与中国特色社会主义的开创", "lesson": 11, "items": ["中共十三大", "社会主义初级阶段基本路线", "一个中心两个基本点", "三步走", "海南特区", "浦东开放", "邓小平南方谈话"]}, {"id": "B4-L12", "book": 4, "unit": 4, "unitName": "中国特色社会主义迈向21世纪", "unitTitle": "中国特色社会主义迈向21世纪", "lesson": 12, "items": ["中共十四大", "建立社会主义市场经济体制", "邓小平理论", "开放沿江城市(重庆武汉等)", "开放内陆边境城市", "开放省会和自治区首府", "加入世贸(WTO)", "科教兴国战略", "西部大开发"]}, {"id": "B4-L13", "book": 4, "unit": 4, "unitName": "中国特色社会主义迈向21世纪", "unitTitle": "中国特色社会主义迈向21世纪", "lesson": 13, "items": ["实现小康水平", "依法治国与先进文化建设", "香港澳门回归", "海峡两岸交流", "九二共识", "汪辜会谈"]}, {"id": "B4-L14", "book": 4, "unit": 4, "unitName": "中国特色社会主义迈向21世纪", "unitTitle": "中国特色社会主义迈向21世纪", "lesson": 14, "items": ["中国特色军事变革", "裁军", "开展睦邻外交", "全方位外交"]}, {"id": "B4-L15", "book": 4, "unit": 5, "unitName": "在新形势下坚持和发展中国特色社会主义", "unitTitle": "在新形势下坚持和发展中国特色社会主义", "lesson": 15, "items": ["中共十六大", "三个代表重要思想", "全面建设小康社会", "提出科学发展观"]}, {"id": "B4-L16", "book": 4, "unit": 5, "unitName": "在新形势下坚持和发展中国特色社会主义", "unitTitle": "在新形势下坚持和发展中国特色社会主义", "lesson": 16, "items": ["中共十七大", "中国特色社会主义理论体系", "科学发展观写入党章", "北京奥运会", "41届世界博览会", "支持港澳经济社会发展", "《反分裂国家法》", "连战访问大陆"]}, {"id": "B4-L17", "book": 4, "unit": 5, "unitName": "在新形势下坚持和发展中国特色社会主义", "unitTitle": "在新形势下坚持和发展中国特色社会主义", "lesson": 17, "items": ["新世纪军事战略方针", "坚持和平发展合作的外交", "20国集团领导人峰会", "金砖国家领导人会晤", "外交为民的宗旨"]}, {"id": "B4-L18", "book": 4, "unit": 6, "unitName": "中国特色社会主义进入新时代", "unitTitle": "中国特色社会主义进入新时代", "lesson": 18, "items": ["中共十八大", "两个一百年", "中国梦", "五位一体总体布局", "四个全面"]}, {"id": "B4-L19", "book": 4, "unit": 6, "unitName": "中国特色社会主义进入新时代", "unitTitle": "中国特色社会主义进入新时代", "lesson": 19, "items": ["中共十九大", "习近平新时代中国特色社会主义思想载入宪法", "《民法典》", "打赢脱贫攻坚战"]}, {"id": "B4-L20", "book": 4, "unit": 6, "unitName": "中国特色社会主义进入新时代", "unitTitle": "中国特色社会主义进入新时代", "lesson": 20, "items": ["国家安全委员会", "国家安全观", "强军目标", "爱国者治港", "治澳", "习马会", "《台湾问题与新时代中国统一事业》"]}, {"id": "B4-L21", "book": 4, "unit": 6, "unitName": "中国特色社会主义进入新时代", "unitTitle": "中国特色社会主义进入新时代", "lesson": 21, "items": ["人类命运共同体", "一带一路", "中国特色大国外交"]}, {"id": "B4-L22", "book": 4, "unit": 7, "unitName": "全面建设社会主义现代化国家", "unitTitle": "全面建设社会主义现代化国家", "lesson": 22, "items": ["中国共产党成立100周年", "国内国际双循环", "构建自由贸易区", "全面建成小康社会", "中华民族共同体意识"]}, {"id": "B4-L23", "book": 4, "unit": 7, "unitName": "全面建设社会主义现代化国家", "unitTitle": "全面建设社会主义现代化国家", "lesson": 23, "items": ["经济实力的跃升", "创新型国家", "中共二十大", "全面建成社会主义现代化强国"]}];
-const CN=['零','一','二','三','四','五','六','七','八','九','十'];
-const DAY=86400000;
+/* ================= AI 维护区：题库数据 =================
+   数据来源：《上海初中历史中考复习-目录和提纲的对应20260923.pptx》
+   更新数据只需整体替换 RAW 数组，逻辑层无需改动。
+   RAW[i] = { book:1-4, unit, unitName, unitSubtitle, lesson, title, keywords[] } */
+const RAW = [{"b":1,"u":1,"un":"史前时期","us":"原始社会与中华文明的起源","l":1,"t":"远古时期的人类活动","k":["元谋人","北京人","山顶洞人","旧石器时代","打制石器","化石","用火"]},{"b":1,"u":1,"un":"史前时期","us":"原始社会与中华文明的起源","l":2,"t":"原始农业与史前社会","k":["新石器时代","河姆渡人","水稻","干栏式建筑","仰韶文化","半坡人","粟","半地穴式房屋","贫富分化","大汶口文化"]},{"b":1,"u":1,"un":"史前时期","us":"原始社会与中华文明的起源","l":3,"t":"中华文明的起源","k":["早期国家","文明","良渚遗址","陶寺遗址","多元一体","炎帝","黄帝","大禹治水","禅让制"]},{"b":1,"u":2,"un":"夏商周时期","us":"奴隶制王朝的更替和向封建社会的过渡","l":4,"t":"夏商西周王朝的更替","k":["世袭制（公天下—家天下）","盘庚迁殷","牧野之战","周分封制","国人暴动"]},{"b":1,"u":2,"un":"夏商周时期","us":"奴隶制王朝的更替和向封建社会的过渡","l":5,"t":"动荡变化中的春秋时期","k":["铁制农具","牛耕","王室衰微","诸侯争霸"]},{"b":1,"u":2,"un":"夏商周时期","us":"奴隶制王朝的更替和向封建社会的过渡","l":6,"t":"战国时期的社会变革","k":["兼并战争","战国七雄","商鞅变法","都江堰"]},{"b":1,"u":2,"un":"夏商周时期","us":"奴隶制王朝的更替和向封建社会的过渡","l":7,"t":"百家争鸣","k":["儒家","道家","墨家","法家","百家争鸣"]},{"b":1,"u":2,"un":"夏商周时期","us":"奴隶制王朝的更替和向封建社会的过渡","l":8,"t":"夏商周时期的科技与文化","k":["二十四节气","神农尝百草","扁鹊","《黄帝内经》","甲骨文","金文","青铜器","三星堆","《诗经》","屈原","楚辞"]},{"b":1,"u":3,"un":"秦汉时期","us":"统一多民族国家的建立与巩固","l":9,"t":"秦统一中国","k":["秦灭六国","三公九卿制","郡县制","中央集权制度","小篆","灵渠"]},{"b":1,"u":3,"un":"秦汉时期","us":"统一多民族国家的建立与巩固","l":10,"t":"秦末农民大起义","k":["秦的暴政","焚书坑儒","陈胜","吴广起义","巨鹿之战"]},{"b":1,"u":3,"un":"秦汉时期","us":"统一多民族国家的建立与巩固","l":11,"t":"西汉建立和“文景之治”","k":["楚汉之争","休养生息","轻徭薄赋","和亲","文景之治"]},{"b":1,"u":3,"un":"秦汉时期","us":"统一多民族国家的建立与巩固","l":12,"t":"大一统王朝的巩固","k":["推恩令","耧车","尊崇儒术","北击匈奴","卫青","霍去病","河西四郡","刺史制度","察举制"]},{"b":1,"u":3,"un":"秦汉时期","us":"统一多民族国家的建立与巩固","l":13,"t":"东汉的兴衰","k":["光武中兴","外戚","宦官交替专权","地方豪强割据","黄巾起义"]},{"b":1,"u":3,"un":"秦汉时期","us":"统一多民族国家的建立与巩固","l":14,"t":"丝绸之路的开通与经营西域","k":["张骞","丝绸之路","西域都护府","甘英","班超班勇"]},{"b":1,"u":3,"un":"秦汉时期","us":"统一多民族国家的建立与巩固","l":15,"t":"秦汉时期的科技与文化","k":["造纸术","张仲景","华佗","《九章算术》","《汜胜之书》","司马迁《史记》","班固《汉书》","道教","佛教","汉赋","乐府诗"]},{"b":1,"u":4,"un":"三国两晋南北朝时期","us":"政权分立与民族交融","l":16,"t":"三国鼎立","k":["三国鼎立","官渡之战","赤壁之战","翻车"]},{"b":1,"u":4,"un":"三国两晋南北朝时期","us":"政权分立与民族交融","l":17,"t":"西晋的短暂统一和北方各族的内迁","k":["八王之乱","北方游牧民族内迁"]},{"b":1,"u":4,"un":"三国两晋南北朝时期","us":"政权分立与民族交融","l":18,"t":"东晋南朝政治和江南地区的开发","k":["王与马","共天下","祖逖北伐","南朝","江南地区的开发"]},{"b":1,"u":4,"un":"三国两晋南北朝时期","us":"政权分立与民族交融","l":19,"t":"北朝政治和北方民族大交融","k":["淝水之战","北魏孝文帝改革","六镇兵变","北方地区的民族交融"]},{"b":1,"u":4,"un":"三国两晋南北朝时期","us":"政权分立与民族交融","l":20,"t":"三国两晋南北朝时期的科技与文化","k":["贾思勰《齐民要术》","祖冲之“圆周率”","书法家钟繇","王羲之《兰亭集序》","顾恺之《女史箴图》和《洛阳神赋》","云冈石窟","龙门石窟","曹操父子建安文学","陶渊明","郦道元《水经注》"]},{"b":2,"u":1,"un":"隋唐时期","us":"繁荣与开放的时代","l":1,"t":"隋朝统一与灭亡","k":["隋的统一","开通大运河","创立科举制","隋朝速亡"]},{"b":2,"u":1,"un":"隋唐时期","us":"繁荣与开放的时代","l":2,"t":"唐朝建立与“贞观之治”","k":["贞观之治","房谋杜断","魏征","武则天","开创殿试"]},{"b":2,"u":1,"un":"隋唐时期","us":"繁荣与开放的时代","l":3,"t":"开元盛世","k":["曲辕犁","筒车","陆羽","越青邢白唐三彩","草市","坊市制度"]},{"b":2,"u":1,"un":"隋唐时期","us":"繁荣与开放的时代","l":4,"t":"安史之乱与唐朝衰亡","k":["外重内轻格局","藩镇割据","王仙芝","黄巢起义","五代十国","周世宗改革"]},{"b":2,"u":1,"un":"隋唐时期","us":"繁荣与开放的时代","l":5,"t":"隋唐时期的民族交往与交融","k":["文成公主入藏","唐蕃会盟","灭突厥","回鹘（回纥）","渤海","南诏"]},{"b":2,"u":1,"un":"隋唐时期","us":"繁荣与开放的时代","l":6,"t":"隋唐时期的中外文化交流","k":["遣隋使和遣唐使","阿倍仲麻吕","鸿胪寺","鉴真东渡","玄奘西行","东罗马","大食","新罗"]},{"b":2,"u":1,"un":"隋唐时期","us":"繁荣与开放的时代","l":7,"t":"隋唐时期的科技与文化","k":["雕版印刷术","僧一行","孙思邈","韩愈","柳宗元","李白","杜甫","白居易","颜真卿","柳公权","阎立本","吴道子","敦煌莫高窟","赵州桥"]},{"b":2,"u":2,"un":"辽宋夏金元时期","us":"民族关系发展和社会变化","l":8,"t":"北宋的政治","k":["陈桥兵变","杯酒释兵权","通判","加强中央集权","发展科举制","崇文抑武","王安石变法"]},{"b":2,"u":2,"un":"辽宋夏金元时期","us":"民族关系发展和社会变化","l":9,"t":"辽；西夏与北宋并立","k":["辽 契丹 耶律阿保机","西夏 党项 元昊","澶渊之盟","宋夏和谈","互市"]},{"b":2,"u":2,"un":"辽宋夏金元时期","us":"民族关系发展和社会变化","l":10,"t":"金与南宋对峙","k":["金 女真 完颜阿骨打","靖康之变","岳飞抗金","南宋偏安"]},{"b":2,"u":2,"un":"辽宋夏金元时期","us":"民族关系发展和社会变化","l":11,"t":"元朝的建立","k":["成吉思汗","忽必烈建元大都","文天祥","行省制","宣政院","元朝民族交融","四等人制"]},{"b":2,"u":2,"un":"辽宋夏金元时期","us":"民族关系发展和社会变化","l":12,"t":"辽宋夏金元时期经济的繁荣","k":["越南占城稻","苏湖熟","天下足","黄道婆","元青花瓷","交子","清明上河图","经济重心南移"]},{"b":2,"u":2,"un":"辽宋夏金元时期","us":"民族关系发展和社会变化","l":13,"t":"辽宋夏金元时期的对外交流","k":["海上丝绸之路","市舶司","马可波罗来华","中外文化交往","南海一号沉船"]},{"b":2,"u":2,"un":"辽宋夏金元时期","us":"民族关系发展和社会变化","l":14,"t":"辽宋夏金元时期的科技与文化","k":["活字印刷术","指南针","火药","四大发明","沈括《梦溪笔谈》","苏颂","郭守敬","程朱理学","宋词","苏轼 李清照 辛弃疾","元曲","司马光《资治通鉴》"]},{"b":2,"u":3,"un":"明清时期（至鸦片战争前）","us":"统一多民族国家的巩固与发展","l":15,"t":"明朝的统治","k":["靖难之役","废丞相","权分六部","厂卫制度","设三司","八股文","隆庆和议"]},{"b":2,"u":3,"un":"明清时期（至鸦片战争前）","us":"统一多民族国家的巩固与发展","l":16,"t":"明朝的对外关系","k":["郑和下西洋","戚继光抗倭","援朝战争","葡萄牙人攫取在澳门的租住权"]},{"b":2,"u":3,"un":"明清时期（至鸦片战争前）","us":"统一多民族国家的巩固与发展","l":17,"t":"明朝的灭亡和清朝的建立","k":["张居正改革","李自成起义","满洲兴起","清军入关","八旗制度"]},{"b":2,"u":3,"un":"明清时期（至鸦片战争前）","us":"统一多民族国家的巩固与发展","l":18,"t":"清朝的边疆治理","k":["郑成功收复台湾","达赖班禅","金瓶挚签","驻藏大臣","平准噶尔","平大小和卓叛乱","土尔扈特部回归祖国","雅克萨之战","《尼布楚条约》"]},{"b":2,"u":3,"un":"明清时期（至鸦片战争前）","us":"统一多民族国家的巩固与发展","l":19,"t":"清朝君主专制的强化","k":["军机处","奏折制度","文字狱","白莲教起义","禁海令","闭关政策","广州十三行","马葛尔尼使团来华"]},{"b":2,"u":3,"un":"明清时期（至鸦片战争前）","us":"统一多民族国家的巩固与发展","l":20,"t":"明清时期社会经济的发展","k":["鱼鳞图册","农产品商品化","手工工场","商帮","摊丁入亩","天下四聚"]},{"b":2,"u":3,"un":"明清时期（至鸦片战争前）","us":"统一多民族国家的巩固与发展","l":21,"t":"明清时期的科技与文化","k":["李时珍《本草纲目》","徐光启《农政全书》","宋应星《天工开物》","明长城","北京城","王守仁","黄宗羲","顾炎武","王夫之","四大名著","昆曲","京剧","四库全书"]},{"b":3,"u":1,"un":"中国开始沦为半殖民地半封建社会","us":"","l":3,"t":"太平天国运动","k":["洪秀全","金田起义","《天朝田亩制度》","《资政新篇》"]},{"b":3,"u":1,"un":"中国开始沦为半殖民地半封建社会","us":"","l":2,"t":"第二次鸦片战争","k":["《天津条约》","火烧圆明园","《北京条约》","《瑷珲条约》"]},{"b":3,"u":1,"un":"中国开始沦为半殖民地半封建社会","us":"","l":1,"t":"鸦片战争","k":["林则徐","虎门销烟","《南京条约》","《望厦条约》","《黄埔条约》"]},{"b":3,"u":2,"un":"早期现代化的初步探索和民族危机加剧","us":"","l":6,"t":"戊戌变法","k":["康有为","公车上书","百日维新（戊戌变法）","《时务报》","戊戌六君子"]},{"b":3,"u":2,"un":"早期现代化的初步探索和民族危机加剧","us":"","l":5,"t":"甲午中日战争与列强瓜分中国狂潮","k":["甲午战争","丁汝昌《马关条约》","赎辽费","门户开放","张謇","实业救国"]},{"b":3,"u":2,"un":"早期现代化的初步探索和民族危机加剧","us":"","l":4,"t":"洋务运动和边疆危机","k":["洋务运动","自强求富","左宗棠收复新疆","中法战争","冯子材","镇南关大捷"]},{"b":3,"u":2,"un":"早期现代化的初步探索和民族危机加剧","us":"","l":7,"t":"义和团运动和八国联军","k":["义和团运动","八国联军侵华","《辛丑条约》"]},{"b":3,"u":3,"un":"资产阶级民主革命与中华民国的建立","us":"","l":10,"t":"帝制复辟与军阀割据","k":["袁世凯复辟帝制","护国战争","蔡锷","军阀割据"]},{"b":3,"u":3,"un":"资产阶级民主革命与中华民国的建立","us":"","l":9,"t":"辛亥革命","k":["武昌起义（辛亥革命）","《中华民国临时约法》","宋教仁","国民党","二次革命"]},{"b":3,"u":3,"un":"资产阶级民主革命与中华民国的建立","us":"","l":8,"t":"中国同盟会","k":["孙中山","兴中会","同盟会","《民报》","三民主义","广州起义","黄兴","黄花岗七十二烈士"]},{"b":3,"u":4,"un":"新民主主义革命兴起","us":"","l":12,"t":"中国共产党诞生","k":["李大钊《我的马克思主义观》","中共一大","中共二大","京汉铁路大罢工"]},{"b":3,"u":4,"un":"新民主主义革命兴起","us":"","l":11,"t":"五四运动","k":["陈独秀","《青年杂志》（《新青年》）","新文化运动","民主与科学","五四运动"]},{"b":3,"u":5,"un":"从国共合作到农村革命根据地的建立","us":"","l":15,"t":"中国工农红军长征与遵义会议","k":["五次反围剿","红军长征","遵义会议","三人军事小组"]},{"b":3,"u":5,"un":"从国共合作到农村革命根据地的建立","us":"","l":14,"t":"毛泽东开辟井冈山道路","k":["南昌起义","八七会议","秋收起义","工农革命","三湾改编","井冈山会师","井冈山根据地","工农武装割据","古田会议","中华苏维埃第一次全国代表大会"]},{"b":3,"u":5,"un":"从国共合作到农村革命根据地的建立","us":"","l":13,"t":"国共合作与北伐战争","k":["中共三大","国民党一大","新三民主义","国共合作","黄埔军校","北伐","叶挺独立团","上海工人三次武装起义","四一二反革命政变","宁汉合流","张学良改旗易帜"]},{"b":3,"u":6,"un":"中华民族的抗日战争","us":"","l":18,"t":"全民族抗战中的正面战场和敌后战场","k":["平型关大捷","台儿庄大捷","武汉会战","枣宜会战","豫湘桂战役","百团大战","游击战","皖南事变","中国远征军入缅作战","《开罗宣言》"]},{"b":3,"u":6,"un":"中华民族的抗日战争","us":"","l":17,"t":"七七事变与全民族抗战","k":["七七事变","第二次国共合作","新四军与八路军","淞沪会战","南京大屠杀"]},{"b":3,"u":6,"un":"中华民族的抗日战争","us":"","l":16,"t":"从九一八事变到西安事变","k":["九一八事变","伪满洲国","抗日义勇军","东北抗日联军","杨靖宇","长城抗战","一二九运动","瓦窑堡会议","西安事变","抗日民族统一战线"]},{"b":3,"u":6,"un":"中华民族的抗日战争","us":"","l":19,"t":"抗日战争的胜利","k":["《论持久战》","中共七大","《波茨坦公告》"]},{"b":3,"u":7,"un":"人民解放战争","us":"","l":21,"t":"人民解放战争的胜利","k":["《中国土地法大纲》","刘邓大军千里跃进大别山","辽沈","淮海","平津三大战役","渡江战役","中国七届二中全会","新民主主义革命胜利"]},{"b":3,"u":7,"un":"人民解放战争","us":"","l":20,"t":"国民党挑起内战","k":["重庆谈判","双十协定","解放战争","刘胡兰"]},{"b":4,"u":1,"un":"中华人民共和国成立和社会主义制度建立","us":"","l":3,"t":"社会主义制度建立","k":["过渡时期总路线 一化三改造","一五计划","三大改造 生产合作社","人民代表大会制度","社会主义制度建立"]},{"b":4,"u":1,"un":"中华人民共和国成立和社会主义制度建立","us":"","l":2,"t":"巩固人民民主政权","k":["土地改革","《中华人民共和国土地改革法》","镇压反革命","抗美援朝","黄继光","邱少云","罗盛教","杨根思","上甘岭战役"]},{"b":4,"u":1,"un":"中华人民共和国成立和社会主义制度建立","us":"","l":1,"t":"中华人民共和国成立","k":["中国人民政治协商会议","《共同纲领》","开国大典","和平解放西藏"]},{"b":4,"u":1,"un":"中华人民共和国成立和社会主义制度建立","us":"","l":4,"t":"独立自主的和平外交","k":["独立自主的和平外交政策","和平共处五项原则","亚非会议","求同存异"]},{"b":4,"u":2,"un":"社会主义建设道路的探索","us":"","l":6,"t":"社会主义建设的巨大成就和先锋模范","k":["武汉","包头钢铁基地","大庆油田","兰新","兰青","成昆铁路","第一颗原子弹","氢弹","人造地球卫星","人工合成牛胰岛素","屠呦呦 青蒿素","袁隆平杂交水稻","民族区域自治制度","钱学森","邓稼先","郭永怀","王进喜","焦裕禄"]},{"b":4,"u":2,"un":"社会主义建设道路的探索","us":"","l":5,"t":"艰辛探索与曲折发展","k":["《论十大关系》中共八大","大跃进","人民公社化运动","文化大革命"]},{"b":4,"u":2,"un":"社会主义建设道路的探索","us":"","l":7,"t":"国防现代化起步和外交工作新突破","k":["第一支海军部队--华东军区","导弹部队（第二炮兵部队）","恢复联合国合法席位","尼克松访华","《中美联合公报》","中日恢复邦交"]},{"b":4,"u":3,"un":"改革开放与中国特色社会主义的开创","us":"","l":10,"t":"改革开放和社会主义现代化建设的全面展开","k":["中共十二大","中国特色社会主义","小康目标","开放14个沿海城市及长三角","珠三角","闵三角开放","一国两制","国防和军队现代化建设"]},{"b":4,"u":3,"un":"改革开放与中国特色社会主义的开创","us":"","l":9,"t":"改革开放的起步","k":["农村家庭联产承包责任制","城市经济体制改革","对外开放","中美建交"]},{"b":4,"u":3,"un":"改革开放与中国特色社会主义的开创","us":"","l":8,"t":"伟大的历史转折","k":["《实践是检验真理的唯一标准》","中共十一届三中全会"]},{"b":4,"u":3,"un":"改革开放与中国特色社会主义的开创","us":"","l":11,"t":"社会主义初级阶段基本路线","k":["中共十三大","社会主义初级阶段基本路线","一个中心两个基本点","三步走","海南特区","浦东开放","邓小平南方谈话"]},{"b":4,"u":4,"un":"中国特色社会主义迈向21世纪","us":"","l":14,"t":"国防和外交工作新局面","k":["中国特色军事变革","裁军","开展睦邻外交","全方位外交"]},{"b":4,"u":4,"un":"中国特色社会主义迈向21世纪","us":"","l":13,"t":"中国特色社会主义事业取得新成就实现","k":["小康水平","依法治国与先进文化建设","香港澳门回归","海峡两岸交流 九二共识","汪辜会谈"]},{"b":4,"u":4,"un":"中国特色社会主义迈向21世纪","us":"","l":12,"t":"加快改革开放和社会主义现代化建设步伐","k":["中共十四大","建立社会主义市场经济体制","邓小平理论","开放重庆","武汉等沿江城市及内陆边境城市及省会和自治区首府","加入世贸（WTO）","科教兴国战略","西部大开发"]},{"b":4,"u":5,"un":"在新形势下坚持和发展中国特色社会主义","us":"","l":16,"t":"夺取全面建设小康社会新胜利","k":["中国十七大","中国特色社会主义理论体系","科学发展观写入党章","背景奥运会","41届世界博览会","支持港澳经济社会发展","《反分裂国家法》","连战访问大陆"]},{"b":4,"u":5,"un":"在新形势下坚持和发展中国特色社会主义","us":"","l":15,"t":"开始全面建设小康社会","k":["中国十六大","三个代表重要思想","全面建设小康社会","提出科学发展观"]},{"b":4,"u":5,"un":"在新形势下坚持和发展中国特色社会主义","us":"","l":17,"t":"推进国防军队建设和外交工作","k":["新世纪军事战略方针","坚持和平发展合作的外交","20国集团领导人峰会","金砖国家领导人会晤","外交为民的宗旨"]},{"b":4,"u":6,"un":"中国特色社会主义进入新时代","us":"","l":20,"t":"维护国家安全和推进祖国统一","k":["国家安全委员会","国家安全观","强军目标","爱国者治港","治澳","习马会","《台湾问题与新时代中国统一事业》"]},{"b":4,"u":6,"un":"中国特色社会主义进入新时代","us":"","l":19,"t":"决胜全面建成小康社会","k":["中国十九大","习近平新时代中国特色社会主义思想载入宪法","《民法典》","打赢脱贫攻坚战"]},{"b":4,"u":6,"un":"中国特色社会主义进入新时代","us":"","l":18,"t":"擘画中国梦宏伟蓝图","k":["中国十八大","两个一百年看","中国梦","五位一体总体布局","四个全面"]},{"b":4,"u":6,"un":"中国特色社会主义进入新时代","us":"","l":21,"t":"构建人类命运共同体与中国特色大国外交","k":["人类命运共同体","一带一路","中国特色大国外交"]},{"b":4,"u":7,"un":"全面建设社会主义现代化国家","us":"","l":23,"t":"开启全面建设社会主义现代化国家新征程","k":["经济实力的跃升","创新性国家","中国二十大","全面建成社会主义现代化强国"]},{"b":4,"u":7,"un":"全面建设社会主义现代化国家","us":"","l":22,"t":"实现第一个百年奋斗目标","k":["中国共产党成立100周年","国内国际双循环","构建自由贸易区网络","全面建成小康社会","中华民族共同体意识"]}];
+
+/* V1→V2 关键词卡进度迁移映射 {"旧key":"新key"}（构建期生成） */
+const MIGRATE = {"B1-L1#0":"B1-L1#0","B1-L1#1":"B1-L1#1","B1-L1#2":"B1-L1#2","B1-L1#3":"B1-L1#3","B1-L1#4":"B1-L1#4","B1-L1#5":"B1-L1#5","B1-L1#6":"B1-L1#6","B1-L2#0":"B1-L2#0","B1-L2#1":"B1-L2#1","B1-L2#2":"B1-L2#2","B1-L2#3":"B1-L2#3","B1-L2#4":"B1-L2#4","B1-L2#5":"B1-L2#5","B1-L2#6":"B1-L2#6","B1-L2#7":"B1-L2#7","B1-L2#8":"B1-L2#8","B1-L2#9":"B1-L2#9","B1-L3#0":"B1-L3#0","B1-L3#1":"B1-L3#1","B1-L3#2":"B1-L3#2","B1-L3#3":"B1-L3#3","B1-L3#4":"B1-L3#4","B1-L3#5":"B1-L3#5","B1-L3#6":"B1-L3#6","B1-L3#7":"B1-L3#7","B1-L3#8":"B1-L3#8","B1-L4#1":"B1-L4#1","B1-L4#2":"B1-L4#2","B1-L4#3":"B1-L4#3","B1-L4#4":"B1-L4#4","B1-L5#0":"B1-L5#0","B1-L5#1":"B1-L5#1","B1-L5#2":"B1-L5#2","B1-L5#3":"B1-L5#3","B1-L6#0":"B1-L6#0","B1-L6#1":"B1-L6#1","B1-L6#2":"B1-L6#2","B1-L6#3":"B1-L6#3","B1-L7#0":"B1-L7#0","B1-L7#1":"B1-L7#1","B1-L7#2":"B1-L7#2","B1-L7#3":"B1-L7#3","B1-L7#4":"B1-L7#4","B1-L8#0":"B1-L8#0","B1-L8#1":"B1-L8#1","B1-L8#2":"B1-L8#2","B1-L8#3":"B1-L8#3","B1-L8#4":"B1-L8#4","B1-L8#5":"B1-L8#5","B1-L8#6":"B1-L8#6","B1-L8#7":"B1-L8#7","B1-L8#8":"B1-L8#8","B1-L8#9":"B1-L8#9","B1-L8#10":"B1-L8#10","B1-L9#0":"B1-L9#0","B1-L9#1":"B1-L9#1","B1-L9#2":"B1-L9#2","B1-L9#3":"B1-L9#3","B1-L9#4":"B1-L9#4","B1-L9#5":"B1-L9#5","B1-L10#0":"B1-L10#0","B1-L10#1":"B1-L10#1","B1-L10#3":"B1-L10#4","B1-L11#0":"B1-L11#0","B1-L11#1":"B1-L11#1","B1-L11#2":"B1-L11#2","B1-L11#3":"B1-L11#3","B1-L11#4":"B1-L11#4","B1-L12#0":"B1-L12#0","B1-L12#1":"B1-L12#1","B1-L12#2":"B1-L12#2","B1-L12#3":"B1-L12#3","B1-L12#5":"B1-L12#6","B1-L12#6":"B1-L12#7","B1-L12#7":"B1-L12#8","B1-L13#0":"B1-L13#0","B1-L13#2":"B1-L13#3","B1-L13#3":"B1-L13#4","B1-L14#0":"B1-L14#0","B1-L14#1":"B1-L14#1","B1-L14#2":"B1-L14#2","B1-L14#3":"B1-L14#3","B1-L14#4":"B1-L14#4","B1-L15#0":"B1-L15#0","B1-L15#1":"B1-L15#1","B1-L15#2":"B1-L15#2","B1-L15#4":"B1-L15#5","B1-L15#5":"B1-L15#6","B1-L15#6":"B1-L15#7","B1-L15#7":"B1-L15#8","B1-L15#8":"B1-L15#9","B1-L15#9":"B1-L15#10","B1-L16#0":"B1-L16#0","B1-L16#1":"B1-L16#1","B1-L16#2":"B1-L16#2","B1-L16#3":"B1-L16#3","B1-L17#0":"B1-L17#0","B1-L17#1":"B1-L17#1","B1-L18#1":"B1-L18#2","B1-L18#2":"B1-L18#3","B1-L18#3":"B1-L18#4","B1-L19#0":"B1-L19#0","B1-L19#1":"B1-L19#1","B1-L19#2":"B1-L19#2","B1-L19#3":"B1-L19#3","B1-L20#0":"B1-L20#0","B1-L20#1":"B1-L20#1","B1-L20#3":"B1-L20#3","B1-L20#5":"B1-L20#5","B1-L20#6":"B1-L20#6","B1-L20#7":"B1-L20#7","B1-L20#8":"B1-L20#8","B1-L20#9":"B1-L20#9","B2-L1#0":"B2-L1#0","B2-L1#1":"B2-L1#1","B2-L1#2":"B2-L1#2","B2-L1#3":"B2-L1#3","B2-L2#0":"B2-L2#0","B2-L2#1":"B2-L2#1","B2-L2#2":"B2-L2#2","B2-L2#3":"B2-L2#3","B2-L2#4":"B2-L2#4","B2-L3#1":"B2-L3#0","B2-L3#2":"B2-L3#1","B2-L3#3":"B2-L3#2","B2-L3#4":"B2-L3#3","B2-L3#5":"B2-L3#4","B2-L3#6":"B2-L3#5","B2-L4#1":"B2-L4#0","B2-L4#2":"B2-L4#1","B2-L4#3":"B2-L4#2","B2-L4#4":"B2-L4#3","B2-L4#5":"B2-L4#4","B2-L4#6":"B2-L4#5","B2-L5#0":"B2-L5#0","B2-L5#1":"B2-L5#1","B2-L5#2":"B2-L5#2","B2-L5#4":"B2-L5#4","B2-L5#5":"B2-L5#5","B2-L6#0":"B2-L6#0","B2-L6#1":"B2-L6#1","B2-L6#2":"B2-L6#2","B2-L6#3":"B2-L6#3","B2-L6#4":"B2-L6#4","B2-L6#5":"B2-L6#5","B2-L6#6":"B2-L6#6","B2-L6#7":"B2-L6#7","B2-L7#0":"B2-L7#0","B2-L7#1":"B2-L7#1","B2-L7#2":"B2-L7#2","B2-L7#3":"B2-L7#3","B2-L7#4":"B2-L7#4","B2-L7#5":"B2-L7#5","B2-L7#6":"B2-L7#6","B2-L7#7":"B2-L7#7","B2-L7#8":"B2-L7#8","B2-L7#9":"B2-L7#9","B2-L7#10":"B2-L7#10","B2-L7#11":"B2-L7#11","B2-L7#12":"B2-L7#12","B2-L7#13":"B2-L7#13","B2-L8#0":"B2-L8#0","B2-L8#1":"B2-L8#1","B2-L8#2":"B2-L8#2","B2-L8#3":"B2-L8#3","B2-L8#4":"B2-L8#4","B2-L8#5":"B2-L8#5","B2-L8#6":"B2-L8#6","B2-L9#2":"B2-L9#2","B2-L9#3":"B2-L9#3","B2-L9#4":"B2-L9#4","B2-L10#1":"B2-L10#1","B2-L10#2":"B2-L10#2","B2-L10#3":"B2-L10#3","B2-L11#0":"B2-L11#0","B2-L11#1":"B2-L11#1","B2-L11#2":"B2-L11#2","B2-L11#3":"B2-L11#3","B2-L11#4":"B2-L11#4","B2-L11#5":"B2-L11#5","B2-L11#6":"B2-L11#6","B2-L12#0":"B2-L12#0","B2-L12#2":"B2-L12#3","B2-L12#3":"B2-L12#4","B2-L12#4":"B2-L12#5","B2-L12#5":"B2-L12#6","B2-L12#6":"B2-L12#7","B2-L13#0":"B2-L13#0","B2-L13#1":"B2-L13#1","B2-L13#2":"B2-L13#2","B2-L13#3":"B2-L13#3","B2-L13#4":"B2-L13#4","B2-L14#0":"B2-L14#0","B2-L14#1":"B2-L14#1","B2-L14#2":"B2-L14#2","B2-L14#3":"B2-L14#3","B2-L14#4":"B2-L14#4","B2-L14#5":"B2-L14#5","B2-L14#6":"B2-L14#6","B2-L14#7":"B2-L14#7","B2-L14#8":"B2-L14#8","B2-L14#12":"B2-L14#10","B2-L14#13":"B2-L14#11","B2-L15#0":"B2-L15#0","B2-L15#1":"B2-L15#1","B2-L15#2":"B2-L15#2","B2-L15#3":"B2-L15#3","B2-L15#4":"B2-L15#4","B2-L15#5":"B2-L15#5","B2-L15#6":"B2-L15#6","B2-L16#0":"B2-L16#0","B2-L16#1":"B2-L16#1","B2-L16#2":"B2-L16#2","B2-L16#3":"B2-L16#3","B2-L17#0":"B2-L17#0","B2-L17#1":"B2-L17#1","B2-L17#2":"B2-L17#2","B2-L17#3":"B2-L17#3","B2-L17#4":"B2-L17#4","B2-L18#0":"B2-L18#0","B2-L18#1":"B2-L18#1","B2-L18#3":"B2-L18#3","B2-L18#4":"B2-L18#4","B2-L18#5":"B2-L18#5","B2-L18#6":"B2-L18#6","B2-L18#7":"B2-L18#7","B2-L18#8":"B2-L18#8","B2-L19#0":"B2-L19#0","B2-L19#1":"B2-L19#1","B2-L19#2":"B2-L19#2","B2-L19#3":"B2-L19#3","B2-L19#4":"B2-L19#4","B2-L19#5":"B2-L19#5","B2-L19#6":"B2-L19#6","B2-L20#0":"B2-L20#0","B2-L20#1":"B2-L20#1","B2-L20#2":"B2-L20#2","B2-L20#3":"B2-L20#3","B2-L20#4":"B2-L20#4","B2-L20#5":"B2-L20#5","B2-L21#0":"B2-L21#0","B2-L21#1":"B2-L21#1","B2-L21#2":"B2-L21#2","B2-L21#3":"B2-L21#3","B2-L21#4":"B2-L21#4","B2-L21#5":"B2-L21#5","B2-L21#6":"B2-L21#6","B2-L21#7":"B2-L21#7","B2-L21#8":"B2-L21#8","B2-L21#9":"B2-L21#9","B2-L21#10":"B2-L21#10","B2-L21#11":"B2-L21#11","B2-L21#12":"B2-L21#12","B3-L1#0":"B3-L1#0","B3-L1#1":"B3-L1#1","B3-L1#3":"B3-L1#2","B3-L1#4":"B3-L1#3","B3-L1#5":"B3-L1#4","B3-L2#1":"B3-L2#0","B3-L2#2":"B3-L2#1","B3-L2#3":"B3-L2#2","B3-L2#4":"B3-L2#3","B3-L3#0":"B3-L3#0","B3-L3#1":"B3-L3#1","B3-L3#3":"B3-L3#2","B3-L3#4":"B3-L3#3","B3-L4#0":"B3-L4#0","B3-L4#3":"B3-L4#2","B3-L4#4":"B3-L4#3","B3-L4#5":"B3-L4#4","B3-L4#6":"B3-L4#5","B3-L5#0":"B3-L5#0","B3-L5#3":"B3-L5#2","B3-L5#4":"B3-L5#3","B3-L5#5":"B3-L5#4","B3-L5#6":"B3-L5#5","B3-L6#0":"B3-L6#0","B3-L6#1":"B3-L6#1","B3-L6#3":"B3-L6#3","B3-L6#4":"B3-L6#4","B3-L7#0":"B3-L7#0","B3-L7#1":"B3-L7#1","B3-L7#2":"B3-L7#2","B3-L8#0":"B3-L8#0","B3-L8#1":"B3-L8#1","B3-L8#2":"B3-L8#2","B3-L8#3":"B3-L8#3","B3-L8#4":"B3-L8#4","B3-L8#5":"B3-L8#5","B3-L8#6":"B3-L8#6","B3-L8#7":"B3-L8#7","B3-L9#1":"B3-L9#1","B3-L9#2":"B3-L9#2","B3-L9#3":"B3-L9#3","B3-L9#4":"B3-L9#4","B3-L10#0":"B3-L10#0","B3-L10#1":"B3-L10#1","B3-L10#2":"B3-L10#2","B3-L10#3":"B3-L10#3","B3-L11#0":"B3-L11#0","B3-L11#2":"B3-L11#2","B3-L11#3":"B3-L11#3","B3-L11#4":"B3-L11#4","B3-L12#2":"B3-L12#1","B3-L12#3":"B3-L12#2","B3-L12#4":"B3-L12#3","B3-L13#0":"B3-L13#0","B3-L13#1":"B3-L13#1","B3-L13#2":"B3-L13#2","B3-L13#3":"B3-L13#3","B3-L13#4":"B3-L13#4","B3-L13#5":"B3-L13#5","B3-L13#6":"B3-L13#6","B3-L13#7":"B3-L13#7","B3-L13#8":"B3-L13#8","B3-L13#9":"B3-L13#9","B3-L13#10":"B3-L13#10","B3-L14#0":"B3-L14#0","B3-L14#1":"B3-L14#1","B3-L14#2":"B3-L14#2","B3-L14#3":"B3-L14#3","B3-L14#4":"B3-L14#4","B3-L14#5":"B3-L14#5","B3-L14#6":"B3-L14#6","B3-L14#7":"B3-L14#7","B3-L14#8":"B3-L14#8","B3-L14#9":"B3-L14#9","B3-L15#0":"B3-L15#0","B3-L15#1":"B3-L15#1","B3-L15#2":"B3-L15#2","B3-L15#3":"B3-L15#3","B3-L16#0":"B3-L16#0","B3-L16#1":"B3-L16#1","B3-L16#2":"B3-L16#2","B3-L16#3":"B3-L16#3","B3-L16#4":"B3-L16#4","B3-L16#5":"B3-L16#5","B3-L16#6":"B3-L16#6","B3-L16#7":"B3-L16#7","B3-L16#8":"B3-L16#8","B3-L16#9":"B3-L16#9","B3-L17#0":"B3-L17#0","B3-L17#1":"B3-L17#1","B3-L17#2":"B3-L17#2","B3-L17#3":"B3-L17#3","B3-L17#4":"B3-L17#4","B3-L18#0":"B3-L18#0","B3-L18#1":"B3-L18#1","B3-L18#2":"B3-L18#2","B3-L18#3":"B3-L18#3","B3-L18#4":"B3-L18#4","B3-L18#5":"B3-L18#5","B3-L18#6":"B3-L18#6","B3-L18#7":"B3-L18#7","B3-L18#8":"B3-L18#8","B3-L18#9":"B3-L18#9","B3-L19#0":"B3-L19#0","B3-L19#1":"B3-L19#1","B3-L19#2":"B3-L19#2","B3-L20#0":"B3-L20#0","B3-L20#1":"B3-L20#1","B3-L20#2":"B3-L20#2","B3-L20#3":"B3-L20#3","B3-L21#0":"B3-L21#0","B3-L21#1":"B3-L21#1","B3-L21#3":"B3-L21#5","B3-L21#5":"B3-L21#7","B4-L1#0":"B4-L1#0","B4-L1#1":"B4-L1#1","B4-L1#2":"B4-L1#2","B4-L1#3":"B4-L1#3","B4-L2#0":"B4-L2#0","B4-L2#1":"B4-L2#1","B4-L2#2":"B4-L2#2","B4-L2#3":"B4-L2#3","B4-L2#4":"B4-L2#4","B4-L2#5":"B4-L2#5","B4-L2#6":"B4-L2#6","B4-L2#7":"B4-L2#7","B4-L2#8":"B4-L2#8","B4-L3#2":"B4-L3#1","B4-L3#5":"B4-L3#3","B4-L3#6":"B4-L3#4","B4-L4#0":"B4-L4#0","B4-L4#1":"B4-L4#1","B4-L4#2":"B4-L4#2","B4-L4#3":"B4-L4#3","B4-L5#2":"B4-L5#1","B4-L5#3":"B4-L5#2","B4-L5#4":"B4-L5#3","B4-L6#1":"B4-L6#1","B4-L6#2":"B4-L6#2","B4-L6#5":"B4-L6#5","B4-L6#6":"B4-L6#6","B4-L6#7":"B4-L6#7","B4-L6#8":"B4-L6#8","B4-L6#9":"B4-L6#9","B4-L6#11":"B4-L6#11","B4-L6#12":"B4-L6#12","B4-L6#13":"B4-L6#13","B4-L6#14":"B4-L6#14","B4-L6#15":"B4-L6#15","B4-L6#16":"B4-L6#16","B4-L6#17":"B4-L6#17","B4-L7#2":"B4-L7#2","B4-L7#3":"B4-L7#3","B4-L7#4":"B4-L7#4","B4-L7#5":"B4-L7#5","B4-L8#0":"B4-L8#0","B4-L8#1":"B4-L8#1","B4-L9#0":"B4-L9#0","B4-L9#1":"B4-L9#1","B4-L9#2":"B4-L9#2","B4-L9#3":"B4-L9#3","B4-L10#0":"B4-L10#0","B4-L10#1":"B4-L10#1","B4-L10#2":"B4-L10#2","B4-L10#5":"B4-L10#6","B4-L10#6":"B4-L10#7","B4-L11#0":"B4-L11#0","B4-L11#1":"B4-L11#1","B4-L11#2":"B4-L11#2","B4-L11#3":"B4-L11#3","B4-L11#4":"B4-L11#4","B4-L11#5":"B4-L11#5","B4-L11#6":"B4-L11#6","B4-L12#0":"B4-L12#0","B4-L12#1":"B4-L12#1","B4-L12#2":"B4-L12#2","B4-L12#7":"B4-L12#6","B4-L12#8":"B4-L12#7","B4-L13#1":"B4-L13#1","B4-L13#2":"B4-L13#2","B4-L13#5":"B4-L13#4","B4-L14#0":"B4-L14#0","B4-L14#1":"B4-L14#1","B4-L14#2":"B4-L14#2","B4-L14#3":"B4-L14#3","B4-L15#1":"B4-L15#1","B4-L15#2":"B4-L15#2","B4-L15#3":"B4-L15#3","B4-L16#1":"B4-L16#1","B4-L16#2":"B4-L16#2","B4-L16#4":"B4-L16#4","B4-L16#5":"B4-L16#5","B4-L16#6":"B4-L16#6","B4-L16#7":"B4-L16#7","B4-L17#0":"B4-L17#0","B4-L17#1":"B4-L17#1","B4-L17#2":"B4-L17#2","B4-L17#3":"B4-L17#3","B4-L17#4":"B4-L17#4","B4-L18#2":"B4-L18#2","B4-L18#3":"B4-L18#3","B4-L18#4":"B4-L18#4","B4-L19#1":"B4-L19#1","B4-L19#2":"B4-L19#2","B4-L19#3":"B4-L19#3","B4-L20#0":"B4-L20#0","B4-L20#1":"B4-L20#1","B4-L20#2":"B4-L20#2","B4-L20#3":"B4-L20#3","B4-L20#4":"B4-L20#4","B4-L20#5":"B4-L20#5","B4-L20#6":"B4-L20#6","B4-L21#0":"B4-L21#0","B4-L21#1":"B4-L21#1","B4-L21#2":"B4-L21#2","B4-L22#0":"B4-L22#0","B4-L22#1":"B4-L22#1","B4-L22#3":"B4-L22#3","B4-L22#4":"B4-L22#4","B4-L23#0":"B4-L23#0","B4-L23#3":"B4-L23#3"};
+
+/* ================= 逻辑区（一般无需改动） ================= */
+/* RAW[i] = { b:1-4册, u:单元号, un:单元名, us:单元副标题, l:课号, t:课标题, k:关键词[] } */
+const DATA = RAW.map(r=>({id:'B'+r.b+'-L'+r.l, book:r.b, unit:r.u,
+  unitName:r.un, unitSubtitle:r.us, lesson:r.l, title:r.t, kws:r.k}));
+const UNITS=[]; DATA.forEach(l=>{const uid='B'+l.book+'-U'+l.unit;
+  if(!UNITS.find(u=>u.id===uid))UNITS.push({id:uid,book:l.book,no:l.unit,name:l.unitName,sub:l.unitSubtitle});});
 const LMAP={}; DATA.forEach(l=>LMAP[l.id]=l);
+const UMAP={}; UNITS.forEach(u=>UMAP[u.id]=u);
+const CN=['零','一','二','三','四','五','六','七'];
+const DAY=86400000;
 const ATOMS=[];
-DATA.forEach(l=>l.items.forEach((it,i)=>ATOMS.push({
-  k:l.id+'#'+i, lid:l.id, text:it, book:l.book, unit:l.unit, lesson:l.lesson, idx:i
-})));
-const KEY='hist_zk_v1';
+DATA.forEach(l=>l.kws.forEach((it,i)=>ATOMS.push({
+  k:l.id+'#'+i, lid:l.id, text:it, book:l.book, unit:l.unit, lesson:l.lesson, idx:i})));
+const KEY='hist_zk_v2', OLDKEY='hist_zk_v1';
 function today(){const d=new Date();return Math.floor((d.getTime()-d.getTimezoneOffset()*60000)/DAY);}
-let S=load();
-if(!S.settings.theme){
-  S.settings.theme=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
-  save();
-}
-function applyTheme(){
-  const t=S.settings.theme||'light';
-  document.documentElement.dataset.theme=t;
-  document.getElementById('themeBtn').textContent=t==='dark'?'☀️ 浅色':'🌙 深色';
-}
-document.getElementById('themeBtn').onclick=()=>{
-  S.settings.theme=S.settings.theme==='dark'?'light':'dark';
-  save();applyTheme();
-};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function pick(arr,n){return shuffle(arr.slice()).slice(0,n);}
+
+/* ---------- 状态 ---------- */
+function blank(){return {cards:{},um:{},lm:{},settings:{dailyNew:20},day:today(),todayNew:0,
+  log:{},streak:0,lastDay:0,runs:{l1:[],l2:[]},selfLog:[],audit:{p:0,f:0}};}
 function load(){
   try{const o=JSON.parse(localStorage.getItem(KEY));if(o&&o.cards)return o;}catch(e){}
-  return {cards:{},settings:{dailyNew:20},day:today(),todayNew:0,log:{},streak:0,lastDay:0};
+  try{const old=JSON.parse(localStorage.getItem(OLDKEY));
+    if(old&&old.cards){ // V1→V2 迁移：仅扩展结构，关键词卡进度按文本映射搬入
+      const n=blank();
+      Object.keys(old.cards).forEach(k=>{const nk=MIGRATE[k];if(nk)n.cards[nk]=old.cards[k];});
+      n.settings.dailyNew=old.settings&&old.settings.dailyNew||20;
+      n.settings.theme=old.settings&&old.settings.theme;
+      n.todayNew=old.todayNew||0; n.log=old.log||{}; n.streak=old.streak||0; n.lastDay=old.lastDay||0;
+      console.log('V1 进度已迁移');
+      return n;
+    }}catch(e){}
+  return blank();
+}
+let S=load();
+if(!S.settings.theme){
+  S.settings.theme=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
 }
 function save(){localStorage.setItem(KEY,JSON.stringify(S));}
 function rollDay(){
   const t=today();
   if(S.day!==t){
     const y=t-1;
-    S.streak = (S.lastDay===y)? (S.streak+1) : 1;
+    S.streak=(S.lastDay===y)?(S.streak+1):1;
     S.day=t; S.todayNew=0;
-  }else if(!S.lastDay){ S.streak=1; }
+  }else if(!S.lastDay){S.streak=1;}
+  // L1/L2 掌握度衰减：7天未练每日 -2
+  [S.um,S.lm].forEach(m=>{Object.keys(m).forEach(id=>{
+    if(m[id].ls&&t-m[id].ls>7)m[id].s=Math.max(0,m[id].s-2*(t-m[id].ls-7));});});
   save();
 }
-function tick(){ S.lastDay=today(); S.log[today()]=(S.log[today()]||0)+1; save(); }
-function pathOf(a){const l=LMAP[a.lid];
-  return '第'+CN[l.book]+'册 › 第'+CN[l.unit]+'单元 '+l.unitName+' › 第'+l.lesson+'课';}
-function optOf(l){return '第'+CN[l.book]+'册 · 第'+CN[l.unit]+'单元 '+l.unitName+' · 第'+l.lesson+'课';}
-function fullUnit(l){const t=l.unitTitle||l.unitName;return t===l.unitName?l.unitName:l.unitName+'（'+t.split(/[:：]/).slice(1).join('：')+'）';}
+function tick(){S.lastDay=today();S.log[today()]=(S.log[today()]||0)+1;save();}
 
-/* ---------- 记忆算法（SM-2 简化） ---------- */
+/* ---------- 主题 ---------- */
+function applyTheme(){
+  const t=S.settings.theme||'light';
+  document.documentElement.dataset.theme=t;
+  document.getElementById('themeBtn').textContent=t==='dark'?'☀️ 浅色':'🌙 深色';
+}
+document.getElementById('themeBtn').onclick=()=>{
+  S.settings.theme=S.settings.theme==='dark'?'light':'dark';save();applyTheme();};
+
+/* ---------- L1/L2 掌握度 ---------- */
+function mGet(map,id){return map[id]||{s:0,ls:0,lap:0};}
+function mApply(map,id,delta,lapse){
+  const m=map[id]||{s:0,ls:0,lap:0};
+  m.s=Math.max(0,Math.min(100,m.s+delta));
+  if(lapse)m.lap=(m.lap||0)+1;
+  m.ls=today(); map[id]=m; save();
+}
+function unitOf(l){return UMAP['B'+l.book+'-U'+l.unit];}
+function unitFull(u){return u.sub?u.name+'：'+u.sub:u.name;}
+function lessonPath(l){return '第'+CN[l.book]+'册 › 第'+CN[l.unit]+'单元 '+l.unitName+' › 第'+l.lesson+'课 '+l.title;}
+function optOf(l){return '第'+CN[l.book]+'册 · 第'+CN[l.unit]+'单元 '+l.unitName+' · 第'+l.lesson+'课 '+l.title;}
+function avgOf(map){const v=Object.values(map);return v.length?v.reduce((a,b)=>a+b.s,0)/v.length:null;}
+
+/* ---------- SM-2 简化（L3 关键词卡，V1 同款） ---------- */
 function review(k,g){
   let c=S.cards[k];
   if(!c){c=S.cards[k]={e:2.5,i:0,r:0,l:0,d:0};}
-  const fresh = c.r===0;
-  if(g===0){c.r=0;c.i=0;c.l=(c.l||0)+1;c.d=today();c.w=1;}
+  const fresh=c.r===0;
+  if(g===0){c.r=0;c.i=0;c.l=(c.l||0)+1;c.d=today();c.w=1;
+    // 层级联动：细节不稳，上层同步扣 5 分
+    const a=ATOMS.find(x=>x.k===k);
+    if(a){const lid='B'+a.book+'-U'+a.unit,m=UMAP[lid],l=LMAP[a.lid];
+      mApply(S.um,lid,-5,false);mApply(S.lm,a.lid,-5,false);}}
   else{
     c.r++;
-    if(c.r===1)c.i=1; else if(c.r===2)c.i=3; else c.i=Math.round(c.i*c.e);
+    if(c.r===1)c.i=1;else if(c.r===2)c.i=3;else c.i=Math.round(c.i*c.e);
     if(g===1)c.i=Math.max(1,Math.round(c.i*0.7));
     if(g===3)c.i=Math.round(c.i*1.3);
     c.e=Math.min(2.8,Math.max(1.3,c.e+0.1+(g-2)*0.1));
@@ -308,31 +405,40 @@ function buildUnits(){
   fu.onchange=()=>{scope.unit=+fu.value;refreshAll();};
 }
 
-/* ---------- 队列 ---------- */
+/* ---------- L3 出题队列（随机 + 错题模式） ---------- */
 let errMode=false;
-function queue(){
-  if(errMode){
-    return shuffle(ATOMS.filter(a=>inScope(a)&&S.cards[a.k]&&S.cards[a.k].w));
-  }
+function l3Queue(){
+  if(errMode)return shuffle(ATOMS.filter(a=>inScope(a)&&S.cards[a.k]&&S.cards[a.k].w));
   const t=today(),due=[],fresh=[];
-  ATOMS.forEach(a=>{ if(!inScope(a))return;
+  ATOMS.forEach(a=>{if(!inScope(a))return;
     const c=S.cards[a.k];
-    if(!c||c.r===0)fresh.push(a); else if(c.d<=t)due.push(a);});
+    if(!c||c.r===0)fresh.push(a);else if(c.d<=t)due.push(a);});
   const lim=Math.max(0,(S.settings.dailyNew||20)-S.todayNew);
   return shuffle(due.concat(pick(fresh,lim)));
 }
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-function pick(arr,n){return shuffle(arr.slice()).slice(0,n);}
+/* 出题优先级：L1/L2 薄弱单元优先（骨架不稳处先挂细节） */
+function weakWeight(a){
+  const u=mGet(S.um,'B'+a.book+'-U'+a.unit),l=mGet(S.lm,a.lid);
+  return 2.2-(u.s/100)-(l.s/100);
+}
+function weakAtoms(n){
+  const pool=ATOMS.filter(inScope);
+  const weighted=[];
+  pool.forEach(a=>{const w=Math.max(0.2,weakWeight(a));for(let i=0;i<Math.round(w*10);i++)weighted.push(a);});
+  return pick(weighted,n);
+}
 
 /* ---------- 视图切换 ---------- */
 let view='study';
 function setView(v){
   view=v;
   document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
-  ['study','locate','group','find','stat'].forEach(w=>
+  ['study','l1','l2','locate','sim','find','stat'].forEach(w=>
     document.getElementById('v-'+w).classList.toggle('hidden',w!==v));
-  document.getElementById('filters').classList.toggle('hidden',v==='stat');
-  document.getElementById('btnPrint').style.display = v==='find'?'block':'none';
+  const needFilter=(v==='study'||v==='locate'||v==='find');
+  document.getElementById('filters').classList.toggle('hidden',!needFilter);
+  document.getElementById('btnPrint').style.display=v==='find'?'block':'none';
+  checkLock(v);
   refreshAll();
 }
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>setView(b.dataset.v));
@@ -342,10 +448,40 @@ function refreshAll(){
   if(view==='stat')stRender();
   if(view==='find')fRenderTree();
 }
+/* ---------- 解锁逻辑 ---------- */
+function levelMastered(lv){ // 连续两组正考 ≥90%
+  const r=S.runs[lv]||[];return r.length>=2&&Math.min(r[r.length-2],r[r.length-1])>=0.9;
+}
+let lockHintClosed=false;
+function checkLock(v){
+  document.querySelectorAll('.lockbar').forEach(x=>x.remove());
+  const strict=!!S.settings.strict;
+  const tips=[];
+  if(v==='l2'&&strict&&!levelMastered('l1'))tips.push(['v-l2','严格模式：L1 正考连续两组 ≥90% 后解锁 L2。当前 L1 尚未达标。']);
+  if((v==='locate'||v==='sim')&&strict&&!levelMastered('l2'))tips.push(['v-'+v,'严格模式：L2 正考连续两组 ≥90% 后解锁本层。当前 L2 尚未达标。']);
+  if(!strict&&!lockHintClosed){
+    if(v==='l2'&&!levelMastered('l1'))tips.push(['v-l2','建议先练 L1：当前册骨架掌握 '+Math.round(avgOf(S.um)||0)+'%，框架稳了再练课更快。']);
+    if((v==='locate'||v==='sim')&&!levelMastered('l2'))tips.push(['v-'+v,'建议先练 L2：单元→课的地图还不牢，先搭骨架再挂细节。']);
+  }
+  tips.forEach(([vid,msg])=>{
+    const sec=document.getElementById(vid);
+    const bar=document.createElement('div');bar.className='lockbar';
+    bar.innerHTML='<span>'+esc(msg)+'</span><button>✕</button>';
+    bar.querySelector('button').onclick=()=>{if(!strict)lockHintClosed=true;bar.remove();};
+    sec.insertBefore(bar,sec.firstChild);
+  });
+  // 严格模式锁定：禁用该视图的练习入口
+  const gates={l2:['bStart','bRecall'],locate:['lStart'],sim:['mStart']};
+  Object.keys(gates).forEach(v=>{
+    const locked=strict&&((v==='l2'&&!levelMastered('l1'))||((v==='locate'||v==='sim')&&!levelMastered('l2')));
+    gates[v].forEach(id=>{const b=document.getElementById(id);
+      if(b){b.disabled=locked;b.style.opacity=locked?.45:1;}});
+  });
+}
 
 /* ---------- 徽章 ---------- */
 function paintBadges(){
-  const q=queue();
+  const q=l3Queue();
   let dueN=0;ATOMS.forEach(a=>{const c=S.cards[a.k];if(c&&c.r>0&&c.d<=today()&&inScope(a))dueN++;});
   let m=0;ATOMS.forEach(a=>{if(inScope(a)&&mastered(S.cards[a.k]))m++;});
   document.getElementById('badges').innerHTML=
@@ -356,40 +492,90 @@ function paintBadges(){
   document.getElementById('totN').textContent=ATOMS.length;
 }
 
-/* ---------- 闪卡 ---------- */
+/* ================= 闪卡（自适应三层混合） ================= */
 let sq=[],si=0,sFlipped=false;
-function sRender(){
-  document.getElementById('errBar').style.display=errMode?'flex':'none';
-  if(si>=sq.length){sq=queue();si=0;}
-  if(!sq.length){
-    document.getElementById('sProgress').textContent='';
-    document.getElementById('sCount').textContent=errMode?'':'今日新学 '+S.todayNew+' / '+(S.settings.dailyNew||20);
-    document.getElementById('sCard').innerHTML=errMode
-      ? '<div class="big">错题这一轮清完啦 🎉</div>'+
-        '<div class="qhint">在闪卡里按「记住」的考点已自动移出错题本。之后答错的新考点，会回到「统计 → 错题重练」里等你。</div>'
-      : '<div class="big">今日这一轮练完了 \uD83C\uDF89</div>'+
-        '<div class="qhint">明天再来，或者去「定位」「归类」换种练法，也可以到「统计」看看哪几个单元最弱。</div>';
-    document.getElementById('sFlip').style.display='none';
-    document.getElementById('sGrade').style.display='none';
-    return;
-  }
-  const a=sq[si];sFlipped=false;
-  document.getElementById('sProgress').textContent='第 '+(si+1)+' / '+sq.length+' 张';
-  document.getElementById('sCount').textContent='今日新学 '+S.todayNew+' / '+(S.settings.dailyNew||20);
-  const c=cardOf(a.k);
-  document.getElementById('sCard').innerHTML=
-    '<div class="qhint">它属于哪一册、哪个单元、哪一课？</div>'+
-    '<div class="big" id="sWord">'+esc(a.text)+'</div>'+
-    '<div id="sBack" class="hidden">'+
-      '<div class="path">'+pathOf(a)+'<br><span class="u">'+esc(fullUnit(LMAP[a.lid]))+'</span></div>'+
-      itemList(LMAP[a.lid].items,a.idx)+
-    '</div>';
-  document.getElementById('sFlip').style.display='';
-  document.getElementById('sGrade').style.display='none';
+function sBuildQueue(){
+  if(errMode){sq=l3Queue().map(a=>({t:'l3',a}));si=0;return;}
+  const l3=l3Queue();
+  const total=Math.max(l3.length,10);
+  const avg1=avgOf(S.um),avg2=avgOf(S.lm);
+  const w1=0.10*(1+Math.max(0,(80-(avg1==null?50:avg1)))/40);
+  const w2=0.20*(1+Math.max(0,(80-(avg2==null?50:avg2)))/40);
+  const wsum=0.7+w1+w2;
+  let n1=Math.round(total*w1/wsum),n2=Math.round(total*w2/wsum);
+  // L1：最薄弱的单元；L2：最薄弱的课（已掌握≥90 的不再进卡）
+  const uPool=UNITS.filter(u=>mGet(S.um,u.id).s<90)
+    .sort((a,b)=>mGet(S.um,a.id).s-mGet(S.um,b.id).s||mGet(S.um,a.id).ls-mGet(S.um,b.id).ls).slice(0,n1);
+  const lPool=DATA.filter(l=>mGet(S.lm,l.id).s<90)
+    .sort((a,b)=>mGet(S.lm,a.id).s-mGet(S.lm,b.id).s||mGet(S.lm,a.id).ls-mGet(S.lm,b.id).ls).slice(0,n2);
+  sq=shuffle(l3.map(a=>({t:'l3',a}))
+    .concat(uPool.map(u=>({t:'l1',id:u.id})))
+    .concat(lPool.map(l=>({t:'l2',id:l.id}))));
+  si=0;
+}
+function unitListItems(book,hi){
+  return '<ul class="items">'+UNITS.filter(u=>u.book===book).map((u,i)=>
+    '<li class="'+(u.id===hi?'hi':'')+'">'+CN[u.no]+'、'+esc(unitFull(u))+'</li>').join('')+'</ul>';
+}
+function lessonListItems(unitId,hi){
+  const u=UMAP[unitId];
+  return '<ul class="items">'+DATA.filter(l=>l.book===u.book&&l.unit===u.no).map(l=>
+    '<li class="'+(l.id===hi?'hi':'')+'">第'+l.lesson+'课 '+esc(l.title)+'</li>').join('')+'</ul>';
 }
 function itemList(items,hi){
   return '<ul class="items">'+items.map((x,i)=>
     '<li class="'+(i===hi?'hi':'')+'">'+esc(x)+'</li>').join('')+'</ul>';
+}
+function sRender(){
+  document.getElementById('errBar').style.display=errMode?'flex':'none';
+  if(si>=sq.length||!sq.length){sBuildQueue();}
+  if(!sq.length){
+    document.getElementById('sProgress').textContent='';
+    document.getElementById('sCount').textContent=errMode?'':'今日新学 '+S.todayNew+' / '+(S.settings.dailyNew||20);
+    document.getElementById('sCard').innerHTML=errMode
+      ? '<div class="big">错题这一轮清完啦 🎉</div><div class="qhint">按「记住」的考点已移出错题本。之后答错的考点会回到「统计 → 错题重练」。</div>'
+      : '<div class="big">今日这一轮练完了 🎉</div><div class="qhint">明天再来，或者去「L1」「L2」「定位」「模拟」换种练法。</div>';
+    document.getElementById('sFlip').style.display='none';
+    document.getElementById('sGrade').style.display='none';
+    return;
+  }
+  const q=sq[si];sFlipped=false;
+  document.getElementById('sProgress').textContent='第 '+(si+1)+' / '+sq.length+' 张'+({l1:' · 单元卡',l2:' · 课卡',l3:' · 关键词卡'}[q.t]||'');
+  document.getElementById('sCount').textContent=errMode?'':'今日新学 '+S.todayNew+' / '+(S.settings.dailyNew||20);
+  let front='',back='';
+  if(q.t==='l1'){
+    const u=UMAP[q.id];
+    front='<div class="qhint">这个单元属于哪一册？</div><div class="big">'+esc(unitFull(u))+'</div>';
+    back='<div class="path">第'+CN[u.book]+'册</div>'+unitListItems(u.book,u.id);
+  }else if(q.t==='l2'){
+    const l=LMAP[q.id];
+    front='<div class="qhint">这一课属于哪个单元？</div><div class="big">第'+CN[l.book]+'册《'+esc(l.title)+'》</div>';
+    back='<div class="path">第'+CN[l.book]+'册 › 第'+CN[l.unit]+'单元 '+esc(l.unitName)+'</div>'
+      +'<div class="path"><span class="u">'+esc(l.unitSubtitle?('（'+l.unitSubtitle+'）'):'')+'</span></div>'
+      +lessonListItems('B'+l.book+'-U'+l.unit,l.id);
+  }else{
+    const a=q.a,l=LMAP[a.lid];
+    front='<div class="qhint">它属于哪一册、哪个单元、哪一课？</div><div class="big">'+esc(a.text)+'</div>';
+    back='<div class="path">'+lessonPath(l)+'<br><span class="u">'+esc(l.unitSubtitle?('（'+l.unitSubtitle+'）'):'')+'</span></div>'
+      +itemList(l.kws,a.idx);
+  }
+  document.getElementById('sCard').innerHTML=front+'<div id="sBack" class="hidden">'+back+'</div>';
+  document.getElementById('sFlip').style.display='';
+  document.getElementById('sGrade').style.display='none';
+}
+function sGrade(g){
+  const q=sq[si];
+  if(q.t==='l1'){
+    const u=UMAP[q.id];
+    mApply(S.um,q.id,g===0?-20:(g===1?-8:15),g===0);
+    tick();save();
+  }else if(q.t==='l2'){
+    mApply(S.lm,q.id,g===0?-20:(g===1?-8:15),g===0);
+    tick();save();
+  }else{
+    review(q.a.k,g);
+  }
+  si++;sRender();
 }
 document.getElementById('sFlip').onclick=()=>{
   const b=document.getElementById('sBack');if(!b||!b.classList.contains('hidden'))return;
@@ -398,106 +584,253 @@ document.getElementById('sFlip').onclick=()=>{
   document.getElementById('sFlip').style.display='none';
 };
 document.querySelectorAll('#sGrade .btn').forEach(b=>b.onclick=()=>{
-  if(!sFlipped)return;
-  review(sq[si].k,+b.dataset.g);si++;sRender();
+  if(!sFlipped)return;sGrade(+b.dataset.g);
 });
 document.addEventListener('keydown',e=>{
   if(view!=='study')return;
   if(e.code==='Space'){e.preventDefault();document.getElementById('sFlip').click();}
-  if(['1','2','3'].includes(e.key)){const b=document.querySelector('#sGrade .btn[data-g="'+(e.key-1)+'"]');if(b)b.click();}
+  if(['1','2','3'].includes(e.key)&&sFlipped){sGrade(+e.key-1);}
 });
 
-/* ---------- 定位 ---------- */
-let lq=[],li=0,lOK=0,lDone=0,lAns=null,lPicked=false;
-function lStart(){
-  let pool=ATOMS.filter(inScope);
-  if(!pool.length)pool=ATOMS;
-  lq=pick(pool,10);
-  li=0;lOK=0;lDone=0;lRender();
+/* ================= L1 训练：单元 → 册 ================= */
+let aq=[],ai=0,aOK=0,aDone=0,aAns=null,aPicked=false,aMode='quiz',aRecall=null;
+function weakUnits(n){
+  return UNITS.slice().sort((a,b)=>mGet(S.um,a.id).s-mGet(S.um,b.id).s
+    ||mGet(S.um,a.id).ls-mGet(S.um,b.id).ls).slice(0,n);
 }
+document.getElementById('aStart').onclick=()=>{
+  aMode='quiz';aq=shuffle(weakUnits(10));ai=0;aOK=0;aDone=0;aRender();
+};
+document.getElementById('aRecall').onclick=()=>{aMode='recall';aRecallStart();};
+function aRecallStart(){
+  // 抽最薄弱的一册
+  const books=[1,2,3,4].map(b=>({b,avg:UNITS.filter(u=>u.book===b).reduce((x,u)=>x+mGet(S.um,u.id).s,0)/UNITS.filter(u=>u.book===b).length}));
+  books.sort((x,y)=>x.avg-y.avg);
+  aRecall=pick(books.slice(0,2),1)[0].b;
+  document.getElementById('aProgress').textContent='反考 · 回忆清单';
+  document.getElementById('aScore').textContent='';
+  document.getElementById('aNextRow').style.display='none';
+  document.getElementById('aSelfRow').style.display='none';
+  document.getElementById('aCard').innerHTML=
+    '<div class="qhint">第'+CN[aRecall]+'册有哪几个单元？先在嘴里说一遍。</div>'
+    +'<div class="row"><button class="btn primary" id="aShow">显示答案</button></div><div id="aAns"></div>';
+  document.getElementById('aShow').onclick=()=>{
+    document.getElementById('aAns').innerHTML=unitListItems(aRecall,'')
+      +'<div class="note">对照清单：漏了的单元就是你下一张要练的卡。</div>';
+    document.getElementById('aSelfRow').style.display='flex';
+  };
+}
+document.getElementById('aSelfOk').onclick=()=>{
+  if(aMode!=='recall')return;
+  UNITS.filter(u=>u.book===aRecall).forEach(u=>{
+    mApply(S.um,u.id,8,false);S.selfLog.push({lv:'l1',id:u.id,day:today()});});
+  save();paintBadges();aRecallStart();
+};
+document.getElementById('aSelfNo').onclick=()=>{
+  if(aMode!=='recall')return;
+  UNITS.filter(u=>u.book===aRecall).forEach(u=>mApply(S.um,u.id,-8,false));
+  paintBadges();aRecallStart();
+};
+function aRender(){
+  if(ai>=aq.length){
+    const acc=aDone?Math.round(aOK/aDone*100):0;
+    S.runs.l1=(S.runs.l1||[]).concat([acc]).slice(-2);save();
+    document.getElementById('aCard').innerHTML='<div class="big">本组完成：'+aOK+' / '+aDone+'</div>'
+      +'<div class="qhint">正确率 '+acc+'%。'+(acc>=90?'连续两组 ≥90% 即点亮 L1 徽章。':'低于 90% 就再来一组，优先补错的那几册。')+'</div>';
+    document.getElementById('aNextRow').style.display='none';
+    document.getElementById('aProgress').textContent='';document.getElementById('aScore').textContent='';
+    paintBadges();return;
+  }
+  const u=aq[ai];aPicked=false;aAns=u.book;
+  document.getElementById('aProgress').textContent='第 '+(ai+1)+' / '+aq.length+' 题';
+  document.getElementById('aScore').textContent='本组 '+aOK+' / '+aDone;
+  document.getElementById('aCard').innerHTML=
+    '<div class="qhint">这个单元属于哪一册？</div>'
+    +'<div class="big">'+esc(unitFull(u))+'</div><div id="aOpts"></div><div id="aFB"></div>';
+  document.getElementById('aOpts').innerHTML=shuffle([1,2,3,4]).map(b=>
+    '<button class="btn" data-b="'+b+'">第'+CN[b]+'册</button>').join('');
+  document.getElementById('aOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>aAnswer(b));
+  document.getElementById('aNextRow').style.display='none';
+}
+function aAnswer(btn){
+  if(aPicked)return;aPicked=true;
+  const u=aq[ai],ok=+btn.dataset.b===aAns;
+  aDone++;if(ok)aOK++;
+  document.querySelectorAll('#aOpts .btn').forEach(x=>{
+    if(+x.dataset.b===aAns)x.classList.add('correct');
+    else if(x===btn)x.classList.add('wrong');
+  });
+  mApply(S.um,u.id,ok?15:-20,!ok);
+  let fb=ok?'<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 答对了</div>'
+    :'<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 正确位置：第'+CN[aAns]+'册</div>';
+  if(!ok)fb+='<div style="margin-top:6px">'+unitListItems(aAns,u.id)+'</div>';
+  document.getElementById('aFB').innerHTML=fb;
+  document.getElementById('aNextRow').style.display='block';
+  paintBadges();
+}
+document.getElementById('aNext').onclick=()=>{ai++;aRender();};
+
+/* ================= L2 训练：课 → 单元 ================= */
+let bq=[],bi=0,bOK=0,bDone=0,bAns=null,bPicked=false,bMode='quiz',bLesson=null;
+function weakLessons(n){
+  const seen={},out=[];
+  const pool=DATA.slice().sort((a,b)=>mGet(S.lm,a.id).s-mGet(S.lm,b.id).s
+    ||mGet(S.lm,a.id).ls-mGet(S.lm,b.id).ls);
+  pool.forEach(l=>{const uk=l.book+'-'+l.unit;seen[uk]=(seen[uk]||0)+1;
+    if(seen[uk]<=2&&out.length<n)out.push(l);}); // 同单元一组最多2题
+  return out;
+}
+document.getElementById('bStart').onclick=()=>{bMode='quiz';bq=weakLessons(10);bi=0;bOK=0;bDone=0;bRender();};
+document.getElementById('bRecall').onclick=()=>{bMode='recall';bRecallStart();};
+function bRecallStart(){
+  const u=pick(UNITS,1)[0];bLesson=u;
+  document.getElementById('bProgress').textContent='反考 · 回忆清单';
+  document.getElementById('bScore').textContent='';
+  document.getElementById('bNextRow').style.display='none';
+  document.getElementById('bSelfRow').style.display='none';
+  document.getElementById('bCard').innerHTML=
+    '<div class="qhint">第'+CN[u.book]+'册第'+CN[u.no]+'单元（'+esc(u.name)+'）有哪几课？先回忆一遍。</div>'
+    +'<div class="row"><button class="btn primary" id="bShow">显示答案</button></div><div id="bAns"></div>';
+  document.getElementById('bShow').onclick=()=>{
+    document.getElementById('bAns').innerHTML=lessonListItems(u.id,'')
+      +'<div class="note">对应考试翻书动作：脑中先有单元地图，落手才快。</div>';
+    document.getElementById('bSelfRow').style.display='flex';
+  };
+}
+document.getElementById('bSelfOk').onclick=()=>{
+  if(bMode!=='recall')return;
+  DATA.filter(l=>l.book===bLesson.book&&l.unit===bLesson.no).forEach(l=>{
+    mApply(S.lm,l.id,8,false);S.selfLog.push({lv:'l2',id:l.id,day:today()});});
+  save();paintBadges();bRecallStart();
+};
+document.getElementById('bSelfNo').onclick=()=>{
+  if(bMode!=='recall')return;
+  DATA.filter(l=>l.book===bLesson.book&&l.unit===bLesson.no).forEach(l=>mApply(S.lm,l.id,-8,false));
+  paintBadges();bRecallStart();
+};
+function bRender(){
+  if(bi>=bq.length){
+    const acc=bDone?Math.round(bOK/bDone*100):0;
+    S.runs.l2=(S.runs.l2||[]).concat([acc]).slice(-2);save();
+    document.getElementById('bCard').innerHTML='<div class="big">本组完成：'+bOK+' / '+bDone+'</div>'
+      +'<div class="qhint">正确率 '+acc+'%。'+(acc>=90?'连续两组 ≥90% 即点亮 L2 徽章。':'错的那几课，去反考里把单元清单过一遍。')+'</div>';
+    document.getElementById('bNextRow').style.display='none';
+    document.getElementById('bProgress').textContent='';document.getElementById('bScore').textContent='';
+    paintBadges();return;
+  }
+  const l=bq[bi];bPicked=false;bAns=l;bLesson=l;
+  const variant=Math.random()<0.25; // 课号定位变体
+  document.getElementById('bProgress').textContent='第 '+(bi+1)+' / '+bq.length+' 题'+(variant?' · 课号':'');
+  document.getElementById('bScore').textContent='本组 '+bOK+' / '+bDone;
+  let opts=UNITS.filter(u=>u.book===l.book&&u.id!=='B'+l.book+'-U'+l.unit);
+  opts=shuffle(opts).slice(0,3);
+  if(opts.length<3){ // 该册单元不足4个，从他册补
+    const others=shuffle(UNITS.filter(u=>u.book!==l.book)).slice(0,3-opts.length);
+    opts=opts.concat(others);
+  }
+  opts=shuffle(opts.concat([UMAP['B'+l.book+'-U'+l.unit]]));
+  document.getElementById('bCard').innerHTML=
+    '<div class="qhint">'+(variant?'这一课属于哪个单元？':'这一课属于哪个单元？')+'</div>'
+    +'<div class="big">第'+CN[l.book]+'册《'+esc(l.title)+'》'+(variant?'<br><span class="qhint">（第'+l.lesson+'课）</span>':'')+'</div>'
+    +'<div id="bOpts"></div><div id="bFB"></div>';
+  document.getElementById('bOpts').innerHTML=opts.map(u=>
+    '<button class="btn" data-u="'+u.id+'">第'+CN[u.no]+'单元 '+esc(u.name)+'</button>').join('');
+  document.getElementById('bOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>bAnswer(b));
+  document.getElementById('bNextRow').style.display='none';
+}
+function bAnswer(btn){
+  if(bPicked)return;bPicked=true;
+  const l=bq[bi],ok=btn.dataset.u==='B'+l.book+'-U'+l.unit;
+  bDone++;if(ok)bOK++;
+  document.querySelectorAll('#bOpts .btn').forEach(x=>{
+    if(x.dataset.u==='B'+l.book+'-U'+l.unit)x.classList.add('correct');
+    else if(x===btn)x.classList.add('wrong');
+  });
+  mApply(S.lm,l.id,ok?15:-20,!ok);
+  let fb=ok?'<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 答对了</div>'
+    :'<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 正确路径：'+lessonPath(l)+'</div>';
+  if(!ok)fb+='<div style="margin-top:6px">'+lessonListItems('B'+l.book+'-U'+l.unit,'')+'</div>';
+  document.getElementById('bFB').innerHTML=fb;
+  document.getElementById('bNextRow').style.display='block';
+  paintBadges();
+}
+document.getElementById('bNext').onclick=()=>{bi++;bRender();};
+
+/* ================= L3 定位（双向混合） ================= */
+let lq=[],li=0,lOK=0,lDone=0,lPicked=false,lSel=new Set(),lRecallLesson=null;
+document.getElementById('lStart').onclick=()=>{
+  const locate=weakAtoms(5).map(a=>({t:'locate',a}));
+  const recallPool=pick(DATA.filter(l=>inScope({book:l.book,unit:l.unit,lid:l.id})).length?DATA.filter(l=>inScope({book:l.book,unit:l.unit,lid:l.id})):DATA,5);
+  const recall=recallPool.map(l=>({t:'recall',l}));
+  lq=shuffle(locate.concat(recall));li=0;lOK=0;lDone=0;lRender();
+};
 function lRender(){
+  document.getElementById('lSubmitRow').style.display='none';
   if(li>=lq.length){
-    document.getElementById('lQ').textContent='本组完成：'+lOK+' / '+lDone;
-    document.getElementById('lOpts').innerHTML='';
-    document.getElementById('lFB').innerHTML='<div class="note">正确率 '+Math.round(lOK/lDone*100)+'%。低于 80% 就把错的点加到「统计 → 错得最多」里再过一遍。</div>';
-    document.getElementById('lNext').style.display='none';
-    document.getElementById('lProgress').textContent='';
+    const acc=lDone?Math.round(lOK/lDone*100):0;
+    document.getElementById('lCard').innerHTML='<div class="big">本组完成：'+lOK+' / '+lDone+'</div>'
+      +'<div class="qhint">正确率 '+acc+'%。骨架越稳，细节挂得越牢。</div>';
+    document.getElementById('lNextRow').style.display='none';
+    document.getElementById('lProgress').textContent='';document.getElementById('lScore').textContent='';
     return;
   }
-  const a=lq[li],l=LMAP[a.lid];
-  lPicked=false;
-  document.getElementById('lProgress').textContent='第 '+(li+1)+' / '+lq.length+' 题';
+  const q=lq[li];lPicked=false;lSel=new Set();
+  document.getElementById('lProgress').textContent='第 '+(li+1)+' / '+lq.length+' 题'+(q.t==='recall'?' · 回忆':' · 定位');
   document.getElementById('lScore').textContent='本组 '+lOK+' / '+lDone;
-  document.getElementById('lQ').textContent=a.text;
-  const same=DATA.filter(x=>x.book===l.book&&x.id!==l.id);
-  const other=DATA.filter(x=>x.book!==l.book);
-  const opts=shuffle([l].concat(pick(same,2)).concat(pick(other,1)));
-  lAns=l.id;
-  document.getElementById('lOpts').innerHTML=opts.map(o=>
-    '<button class="btn" data-id="'+o.id+'">'+optOf(o)+'</button>').join('');
-  document.getElementById('lOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>lAnswer(b));
-  document.getElementById('lFB').innerHTML='';
-  document.getElementById('lNext').style.display='none';
+  if(q.t==='locate'){
+    const a=q.a,l=LMAP[a.lid];
+    const same=DATA.filter(x=>x.book===l.book&&x.id!==l.id);
+    const other=DATA.filter(x=>x.book!==l.book);
+    const opts=shuffle([l].concat(pick(same,2)).concat(pick(other,1)));
+    document.getElementById('lCard').innerHTML=
+      '<div class="qhint">这个考点在哪一课？</div><div class="big">'+esc(a.text)+'</div>'
+      +'<div id="lOpts"></div><div id="lFB"></div>';
+    document.getElementById('lOpts').innerHTML=opts.map(o=>
+      '<button class="btn" data-id="'+o.id+'">'+optOf(o)+'</button>').join('');
+    document.getElementById('lOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>lAnswer(b));
+  }else{
+    const l=q.l;lRecallLesson=l;
+    const right=l.kws.length>5?pick(l.kws,5):l.kws;
+    const sib=DATA.filter(x=>x.book===l.book&&x.unit===l.unit&&x.id!==l.id);
+    const wrongs=[];sib.forEach(x=>pick(x.kws,2).forEach(w=>wrongs.push(w)));
+    const all=shuffle(right.map(t=>({t:t,ok:true})).concat(pick(wrongs,4)));
+    document.getElementById('lCard').innerHTML=
+      '<div class="qhint">下面哪些考点属于这一课？</div>'
+      +'<div class="path" style="font-size:16px;font-weight:600;margin:8px 0 14px">第'+CN[l.book]+'册 › 第'+CN[l.unit]+'单元 '+esc(l.unitName)+' › 第'+l.lesson+'课 '+esc(l.title)+'</div>'
+      +'<div id="lOpts"></div><div id="lFB"></div>';
+    document.getElementById('lOpts').innerHTML=all.map((o,i)=>
+      '<button class="btn" data-i="'+i+'" data-ok="'+(o.ok?1:0)+'">'+esc(o.t)+'</button>').join('');
+    document.getElementById('lOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>{
+      b.classList.toggle('sel');
+      if(b.classList.contains('sel'))lSel.add(b.dataset.i);else lSel.delete(b.dataset.i);
+      document.getElementById('lSelN').textContent=lSel.size;
+    });
+    document.getElementById('lSelN').textContent='0';
+    document.getElementById('lSubmitRow').style.display='block';
+  }
+  document.getElementById('lFB')&&(document.getElementById('lFB').innerHTML='');
+  document.getElementById('lNextRow').style.display='none';
 }
-function lAnswer(b){
+function lAnswer(btn){
   if(lPicked)return;lPicked=true;
-  const a=lq[li],id=b.dataset.id,ok=id===lAns;
+  const q=lq[li],a=q.a,ok=btn.dataset.id===a.lid;
   lDone++;if(ok)lOK++;
   document.querySelectorAll('#lOpts .btn').forEach(x=>{
-    if(x.dataset.id===lAns)x.classList.add('correct');
-    else if(x===b)x.classList.add('wrong');
+    if(x.dataset.id===a.lid)x.classList.add('correct');
+    else if(x===btn)x.classList.add('wrong');
   });
   const l=LMAP[a.lid];
   document.getElementById('lFB').innerHTML=(ok?'<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 答对了</div>'
-      :'<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 正确位置：'+pathOf(a)+'</div>')
-    +'<div class="path" style="margin-top:6px">'+esc(fullUnit(l))+'</div>'
-    +itemList(l.items,a.idx);
+    :'<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 正确位置：'+lessonPath(l)+'</div>')
+    +itemList(l.kws,a.idx);
   review(a.k,ok?2:0);
-  document.getElementById('lNext').style.display='block';
+  document.getElementById('lNextRow').style.display='block';
   paintBadges();
 }
-document.getElementById('lNext').onclick=()=>{li++;lRender();};
-document.getElementById('lStart').onclick=()=>{lStart();};
-
-/* ---------- 归类 ---------- */
-let gq=[],gi=0,gOK=0,gDone=0,gSel=new Set(),gLesson=null;
-function gStart(){
-  let pool=DATA.filter(l=>inScope({book:l.book,unit:l.unit,lid:l.id}));
-  if(!pool.length)pool=DATA;
-  gq=pick(pool,8);gi=0;gOK=0;gDone=0;gRender();
-}
-function gRender(){
-  if(gi>=gq.length){
-    document.getElementById('gQ').textContent='本组完成：'+gOK+' / '+gDone;
-    document.getElementById('gOpts').innerHTML='';
-    document.getElementById('gFB').innerHTML='<div class="note">这类题练的是「顺着目录回忆内容」，是考试翻书定位的反向能力。</div>';
-    document.getElementById('gSubmit').style.display='none';
-    document.getElementById('gNext').style.display='none';
-    return;
-  }
-  const l=gq[gi];gLesson=l;gSel=new Set();
-  document.getElementById('gProgress').textContent='第 '+(gi+1)+' / '+gq.length+' 课';
-  document.getElementById('gScore').textContent='本组 '+gOK+' / '+gDone;
-  document.getElementById('gQ').innerHTML='第'+CN[l.book]+'册 › 第'+CN[l.unit]+'单元 '+l.unitName+' › 第'+l.lesson+'课'
-    +'<br><span class="u" style="font-weight:400;color:var(--sub)">'+esc(fullUnit(l))+'</span>';
-  const right=l.items.length>5?pick(l.items,5):l.items;
-  const sib=DATA.filter(x=>x.book===l.book&&x.unit===l.unit&&x.id!==l.id);
-  const wrongs=[];sib.forEach(x=>pick(x.items,2).forEach(w=>wrongs.push({t:w,ok:false})));
-  const all=shuffle(right.map(t=>({t:t,ok:true})).concat(pick(wrongs,4)));
-  document.getElementById('gOpts').innerHTML=all.map((o,i)=>
-    '<button class="btn" data-i="'+i+'" data-ok="'+(o.ok?1:0)+'">'+esc(o.t)+'</button>').join('');
-  document.getElementById('gOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>{
-    b.classList.toggle('sel');
-    if(b.classList.contains('sel'))gSel.add(b.dataset.i);else gSel.delete(b.dataset.i);
-    document.getElementById('gSel').textContent=gSel.size;
-  });
-  document.getElementById('gSel').textContent='0';
-  document.getElementById('gFB').innerHTML='';
-  document.getElementById('gSubmit').style.display='block';
-  document.getElementById('gNext').style.display='none';
-}
-document.getElementById('gSubmit').onclick=()=>{
-  const btns=[...document.querySelectorAll('#gOpts .btn')];
+document.getElementById('lSubmit').onclick=()=>{
+  if(lPicked)return;lPicked=true;
+  const q=lq[li],l=q.l;
+  const btns=[...document.querySelectorAll('#lOpts .btn')];
   let allRight=true;
   btns.forEach(b=>{
     const ok=b.dataset.ok==='1',sel=b.classList.contains('sel');
@@ -505,28 +838,120 @@ document.getElementById('gSubmit').onclick=()=>{
     else if(!ok&&sel){b.classList.add('wrong');allRight=false;}
     else if(ok&&!sel){b.classList.add('correct');allRight=false;}
   });
-  gDone++;if(allRight)gOK++;
-  const l=gLesson;
-  document.getElementById('gFB').innerHTML=(allRight?'<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 全对</div>'
-    :'<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 漏了或选错了，完整清单如下</div>')
-    +itemList(l.items,-1);
-  l.items.forEach((_,i)=>review(l.id+'#'+i,allRight?2:0));
-  document.getElementById('gSubmit').style.display='none';
-  document.getElementById('gNext').style.display='block';
+  lDone++;if(allRight)lOK++;
+  document.getElementById('lFB').innerHTML=(allRight?'<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 全对</div>'
+    :'<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 漏了或选错了，本课完整清单：</div>')
+    +itemList(l.kws,-1);
+  l.kws.forEach((_,i)=>review(l.id+'#'+i,allRight?2:0));
+  document.getElementById('lSubmitRow').style.display='none';
+  document.getElementById('lNextRow').style.display='block';
   paintBadges();
 };
-document.getElementById('gNext').onclick=()=>{gi++;gRender();};
-document.getElementById('gStart').onclick=()=>{gStart();};
+document.getElementById('lNext').onclick=()=>{li++;lRender();};
 
-/* ---------- 检索 ---------- */
+/* ================= 综合模拟 ================= */
+let mq=[],mi=0,mOK=0,mDone=0,mStep=0,mAns=null,mT0=0,mTimes=[],mCur=null;
+document.getElementById('mStart').onclick=()=>{
+  mq=pick(ATOMS.filter(inScope).length?ATOMS.filter(inScope):ATOMS,10);
+  mi=0;mOK=0;mDone=0;mTimes=[];mRender();
+};
+function mRender(){
+  if(mi>=mq.length){
+    const acc=mDone?Math.round(mOK/mDone*100):0;
+    const avg=mTimes.length?(mTimes.reduce((a,b)=>a+b,0)/mTimes.length):0;
+    let h='<div class="big">模拟完成：'+mOK+' / '+mDone+' · 平均 '+avg.toFixed(1)+' 秒</div>';
+    h+=simCurve(mTimes);
+    h+='<div class="qhint">'+(acc>=90?'路径已经长在脑子里了，保持每周 1-2 次。':'错的题回到「定位」和「L2」补一补对应单元。')+'</div>';
+    document.getElementById('mCard').innerHTML=h;
+    document.getElementById('mProgress').textContent='';document.getElementById('mScore').textContent='';
+    return;
+  }
+  mCur=mq[mi];mStep=0;mT0=Date.now();
+  const l=LMAP[mCur.lid];
+  document.getElementById('mProgress').textContent='第 '+(mi+1)+' / '+mq.length+' 题';
+  document.getElementById('mScore').textContent='本组 '+mOK+' / '+mDone;
+  document.getElementById('mCard').innerHTML=
+    '<div class="qhint">说出它的完整位置：册 → 单元 → 课</div>'
+    +'<div class="big">'+esc(mCur.text)+'</div>'
+    +'<div class="simstep">第 1 步 <b>选册</b></div><div id="mOpts"></div><div id="mFB"></div>';
+  mRenderBooks();
+}
+function mRenderBooks(){
+  document.getElementById('mOpts').innerHTML=shuffle([1,2,3,4]).map(b=>
+    '<button class="btn" data-b="'+b+'">第'+CN[b]+'册</button>').join('');
+  document.getElementById('mOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>mPick(1,b));
+}
+function mRenderUnits(){
+  const u=UMAP['B'+mAns.book+'-U'+mCur.unit];
+  document.getElementById('mOpts').innerHTML=shuffle(UNITS.filter(x=>x.book===mAns.book)).map(x=>
+    '<button class="btn" data-u="'+x.id+'">第'+CN[x.no]+'单元 '+esc(x.name)+'</button>').join('');
+  document.getElementById('mOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>mPick(2,b));
+}
+function mRenderLessons(){
+  document.getElementById('mOpts').innerHTML=shuffle(DATA.filter(l=>l.book===mAns.book&&l.unit===mCur.unit)).map(l=>
+    '<button class="btn" data-l="'+l.id+'">第'+l.lesson+'课 '+esc(l.title)+'</button>').join('');
+  document.getElementById('mOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>mPick(3,b));
+}
+function mPick(step,btn){
+  if(btn.classList.contains('correct'))return;
+  const l=LMAP[mCur.lid];
+  let ok=false;
+  if(step===1){ok=+btn.dataset.b===l.book;mAns={book:l.book};}
+  if(step===2){ok=btn.dataset.u==='B'+l.book+'-U'+l.unit;}
+  if(step===3){ok=btn.dataset.l===l.id;}
+  const secs=(Date.now()-mT0)/1000;
+  if(!ok){
+    btn.classList.add('wrong');
+    document.getElementById('mFB').innerHTML='<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 第'+step+'步错了 · 耗时 '+secs.toFixed(1)+' 秒</div>'
+      +'<div class="path" style="margin-top:6px">'+lessonPath(l)+'</div>'+itemList(l.kws,mCur.idx);
+    mDone++;review(mCur.k,0);
+    setTimeout(()=>{mi++;mRender();},1400);
+    return;
+  }
+  btn.classList.add('correct');
+  document.getElementById('mOpts').querySelectorAll('.btn').forEach(x=>{if(x!==btn)x.style.opacity=.4;});
+  if(step===1){
+    document.getElementById('mFB').innerHTML='<div class="simstep">✓ 第'+CN[l.book]+'册 · 第 2 步 <b>选单元</b></div>';
+    mRenderUnits();
+  }else if(step===2){
+    document.getElementById('mFB').innerHTML='<div class="simstep">✓ '+esc(UMAP['B'+l.book+'-U'+l.unit].name)+' · 第 3 步 <b>选课</b></div>';
+    mRenderLessons();
+  }else{
+    const done=(Date.now()-mT0)/1000;
+    document.getElementById('mFB').innerHTML='<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 完整路径 '+lessonPath(l)+' · 耗时 '+done.toFixed(1)+' 秒</div>';
+    mDone++;mOK++;mTimes.push(done);review(mCur.k,2);
+    setTimeout(()=>{mi++;mRender();},1100);
+  }
+  paintBadges();
+}
+function simCurve(times){
+  if(!times.length)return '';
+  const W=680,H=120,pad=24,max=Math.max(...times,5);
+  const pts=times.map((t,i)=>{
+    const x=pad+i*(W-2*pad)/Math.max(1,times.length-1);
+    const y=H-pad-(t/max)*(H-2*pad);
+    return [x.toFixed(1),y.toFixed(1),t.toFixed(1)];
+  });
+  let svg='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;background:var(--chip);border-radius:10px;margin-top:10px">';
+  svg+='<polyline points="'+pts.map(p=>p[0]+','+p[1]).join(' ')+'" fill="none" stroke="var(--red)" stroke-width="2"/>';
+  pts.forEach((p,i)=>{svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3.5" fill="var(--red)"/>';
+    svg+='<text x="'+p[0]+'" y="'+(H-6)+'" font-size="10" fill="var(--sub)" text-anchor="middle">'+(i+1)+'</text>';
+    svg+='<text x="'+p[0]+'" y="'+(+p[1]-8)+'" font-size="10" fill="var(--ink)" text-anchor="middle">'+p[2]+'s</text>';});
+  svg+='</svg>';
+  return svg;
+}
+
+/* ================= 检索 / 打印 ================= */
 document.getElementById('fq').oninput=e=>{
   const q=e.target.value.trim();
   const box=document.getElementById('fRes');
   if(!q){box.innerHTML='';return;}
-  const hits=ATOMS.filter(a=>a.text.includes(q)||pathOf(a).includes(q)).slice(0,40);
-  box.innerHTML='<div class="card"><b>命中 '+hits.length+' 条</b>'+
-    hits.map(a=>'<div class="hit"><span class="t">'+esc(a.text)+'</span>'+
-      '<div class="path">'+pathOf(a)+'</div></div>').join('')+'</div>';
+  const hits=ATOMS.filter(a=>a.text.includes(q)||lessonPath(a).includes(q)).slice(0,40);
+  const lhits=DATA.filter(l=>l.title.includes(q)&&!ATOMS.find(a=>a.text===q)).slice(0,10);
+  box.innerHTML='<div class="card"><b>命中 '+hits.length+' 条'+(lhits.length?' · 相关课 '+lhits.length:'')+'</b>'
+    +lhits.map(l=>'<div class="hit"><span class="t">第'+l.lesson+'课 '+esc(l.title)+'</span><div class="path">'+lessonPath(l)+'</div></div>').join('')
+    +hits.map(a=>'<div class="hit"><span class="t">'+esc(a.text)+'</span><div class="path">'+lessonPath(LMAP[a.lid])+'</div></div>').join('')
+    +'</div>';
 };
 function fRenderTree(){
   const box=document.getElementById('fTree');
@@ -538,20 +963,20 @@ function fRenderTree(){
     const us={};ls.forEach(l=>{if(!us[l.unit])us[l.unit]=[];us[l.unit].push(l);});
     Object.keys(us).forEach(u=>{
       if(scope.unit&&scope.unit!=u)return;
-      h+='<div style="margin:8px 0 2px;color:var(--sub);font-size:13.5px">第'+CN[u]+'单元 · '+us[u][0].unitName+'</div>';
+      h+='<div style="margin:8px 0 2px;color:var(--sub);font-size:13.5px">第'+CN[u]+'单元 · '+esc(us[u][0].unitName)+'</div>';
       us[u].forEach(l=>{
-        h+='<details style="padding:4px 0"><summary style="font-weight:500;font-size:14.5px">第'+l.lesson+'课</summary>'+itemList(l.items,-1)+'</details>';
+        h+='<details style="padding:4px 0"><summary style="font-weight:500;font-size:14.5px">第'+l.lesson+'课 '+esc(l.title)+'</summary>'+itemList(l.kws,-1)+'</details>';
       });
     });
     h+='</details>';
   });
-  box.innerHTML=h+ '<div class="row"><button class="btn primary" onclick="window.print()">打印默写纸（留白）</button></div>';
+  box.innerHTML=h+'<div class="row"><button class="btn primary" onclick="window.print()">打印默写纸（留白）</button></div>';
   buildPrint();
 }
 function buildPrint(){
   let h='<h2 style="text-align:center">历史考点定位 · 默写纸</h2><table>';
   DATA.filter(l=>!scope.book||l.book===scope.book).forEach(l=>{
-    h+='<tr><td style="width:36%">第'+CN[l.book]+'册 第'+CN[l.unit]+'单元 · 第'+l.lesson+'课</td><td></td><td></td></tr>';
+    h+='<tr><td style="width:36%">第'+CN[l.book]+'册 第'+CN[l.unit]+'单元 · 第'+l.lesson+'课 '+esc(l.title)+'</td><td></td><td></td></tr>';
   });
   h+='</table>';
   document.getElementById('printArea').innerHTML=h;
@@ -561,52 +986,81 @@ document.getElementById('btnPrint').onclick=()=>window.print();
 document.getElementById('btnPrint').className='btn';
 document.getElementById('btnPrint').style.width='auto';
 
-/* ---------- 统计 ---------- */
+/* ================= 统计 ================= */
 function stRender(){
-  let learned=0,mas=0,due=0,errCnt=0;
-  ATOMS.forEach(a=>{const c=S.cards[a.k];if(inScope(a)){
-    if(c&&c.r>0)learned++;
-    if(mastered(c))mas++;
-    if(c&&c.r>0&&c.d<=today())due++;
-    if(c&&c.w)errCnt++;}});
-  const tot=ATOMS.filter(inScope).length;
-  document.getElementById('stNums').innerHTML=
-    '<div class="stat"><b>'+learned+'</b><span>已接触 / '+tot+'</span></div>'+
-    '<div class="stat"><b>'+mas+'</b><span>已掌握（7天+）</span></div>'+
-    '<div class="stat"><b>'+due+'</b><span>今日待复习</span></div>';
+  // 三层掌握度
+  const a1=avgOf(S.um),a2=avgOf(S.lm);
+  let m3=0;ATOMS.forEach(a=>{if(mastered(S.cards[a.k]))m3++;});
+  const p3=Math.round(m3/ATOMS.length*100);
+  document.getElementById('stChips').innerHTML=
+    chip('L1 册骨架',a1,levelMastered('l1'))+chip('L2 单元血肉',a2,levelMastered('l2'))+chip('L3 关键词细节',p3,false);
+  document.getElementById('stBars').innerHTML=
+    mbar('L1 单元→册',a1)+mbar('L2 课→单元',a2)+mbar('L3 关键词→课',p3);
+  // 各册
   let bh='';
   [1,2,3,4].forEach(b=>{
     const as=ATOMS.filter(a=>a.book===b);
     const m=as.filter(a=>mastered(S.cards[a.k])).length;
     const p=Math.round(m/as.length*100);
-    bh+='<div style="margin-bottom:9px"><div style="display:flex;justify-content:space-between;font-size:14px">'+
-      '<span>第'+CN[b]+'册</span><span style="color:var(--sub)">'+m+' / '+as.length+' · '+p+'%</span></div>'+
-      '<div class="bar"><i style="width:'+p+'%"></i></div></div>';
+    bh+='<div style="margin-bottom:9px"><div style="display:flex;justify-content:space-between;font-size:14px">'
+      +'<span>第'+CN[b]+'册</span><span style="color:var(--sub)">'+m+' / '+as.length+' · '+p+'%</span></div>'
+      +'<div class="bar"><i style="width:'+p+'%"></i></div></div>';
   });
   document.getElementById('stBooks').innerHTML=bh;
-  const um={};
-  DATA.forEach(l=>{const k=l.book+'-'+l.unit;
-    um[k]=um[k]||{name:'第'+CN[l.book]+'册 第'+CN[l.unit]+'单元 '+l.unitName,t:0,m:0};
-    l.items.forEach((_,i)=>{um[k].t++;if(mastered(S.cards[l.id+'#'+i]))um[k].m++;});});
-  const arr=Object.values(um).map(x=>({...x,r:x.t?x.m/x.t:0})).sort((a,b)=>a.r-b.r).slice(0,8);
-  document.getElementById('stWeak').innerHTML=arr.map(x=>
-    '<div class="weak"><span>'+x.name+'</span><span>'+Math.round(x.r*100)+'%</span></div>').join('');
-  const lp=ATOMS.map(a=>({a:a,c:S.cards[a.k]})).filter(x=>x.c&&x.c.l>0)
-    .sort((x,y)=>y.c.l-x.c.l).slice(0,15);
-  document.getElementById('stLapse').innerHTML= lp.length? lp.map(x=>
-    '<div class="weak"><span>'+esc(x.a.text)+'<div class="path" style="font-size:12.5px">'+pathOf(x.a)+'</div></span>'+
-    '<span>错'+x.c.l+'次</span></div>').join('') : '<div style="color:var(--sub);font-size:14px">还没有错题记录，先去练一组。</div>';
-  document.getElementById('setNew').value=S.settings.dailyNew||20;
+  // 弱项单元 TOP8（三层聚合：单元分 / 课均分 / 关键词掌握率，取最低为短板并标注）
+  const rows=UNITS.map(u=>{
+    const u1=mGet(S.um,u.id).s;
+    const ls=DATA.filter(l=>l.book===u.book&&l.unit===u.no);
+    const l2=ls.length?ls.reduce((x,l)=>x+mGet(S.lm,l.id).s,0)/ls.length:0;
+    const atoms=ATOMS.filter(a=>a.book===u.book&&a.unit===u.no);
+    const l3=atoms.length?Math.round(atoms.filter(a=>mastered(S.cards[a.k])).length/atoms.length*100):0;
+    const vals=[['L1',u1],['L2',Math.round(l2)],['L3',l3]].sort((x,y)=>x[1]-y[1]);
+    return {u:u,comp:Math.round((u1+l2+l3)/3),worst:vals[0]};
+  }).sort((a,b)=>a.comp-b.comp).slice(0,8);
+  document.getElementById('stWeak').innerHTML=rows.map(r=>
+    '<div class="weak"><span><span class="ltag l'+r.worst[0].slice(1).toLowerCase()+'">'+r.worst[0]+' 短板</span>第'+CN[r.u.book]+'册第'+CN[r.u.no]+'单元 '+esc(r.u.name)+'</span><span>'+r.comp+'%</span></div>').join('')
+    ||'<div style="color:var(--sub);font-size:14px">暂无数据，先去练一组。</div>';
+  // 错题 TOP15（三层）
+  const lap=[];
+  ATOMS.forEach(a=>{const c=S.cards[a.k];if(c&&c.l>0)lap.push({layer:'L3',name:a.text,path:lessonPath(LMAP[a.lid]),n:c.l});});
+  UNITS.forEach(u=>{const m=mGet(S.um,u.id);if(m.lap)lap.push({layer:'L1',name:unitFull(u),path:'第'+CN[u.book]+'册',n:m.lap});});
+  DATA.forEach(l=>{const m=mGet(S.lm,l.id);if(m.lap)lap.push({layer:'L2',name:l.title,path:lessonPath(l),n:m.lap});});
+  lap.sort((a,b)=>b.n-a.n);
+  document.getElementById('stLapse').innerHTML=lap.length?lap.slice(0,15).map(x=>
+    '<div class="weak"><span><span class="ltag l'+x.layer.slice(1).toLowerCase()+'">'+x.layer+'</span>'+esc(x.name)+'<div class="path" style="font-size:12.5px">'+esc(x.path)+'</div></span><span>错'+x.n+'次</span></div>').join('')
+    :'<div style="color:var(--sub);font-size:14px">还没有错题记录，先去练一组。</div>';
+  // 错题重练
+  let errCnt=0;ATOMS.forEach(a=>{const c=S.cards[a.k];if(c&&c.w&&inScope(a))errCnt++;});
   document.getElementById('errN').textContent=errCnt;
   document.getElementById('btnError').style.display=errCnt?'block':'none';
+  document.getElementById('setNew').value=S.settings.dailyNew||20;
+  document.getElementById('setStrict').value=S.settings.strict?'1':'0';
+  // 家长抽查
+  const week=S.selfLog.filter(x=>today()-x.day<7);
+  const bias=S.audit.p+S.audit.f>0?Math.round(S.audit.f/(S.audit.p+S.audit.f)*100):0;
+  document.getElementById('auditInfo').innerHTML=
+    '近 7 天孩子自评「全会了」'+week.length+' 次。'+(S.audit.p+S.audit.f>0?'已抽查 '+(S.audit.p+S.audit.f)+' 次，自评偏差 '+bias+'%。':'')
+    +(bias>30?'<b style="color:var(--red)">近期自评偏乐观，建议增加抽查频率。</b>':(week.length?'建议本周抽查 5 分钟。':''));
+  renderAudit();
+}
+function chip(name,val,done){
+  const v=(val==null||isNaN(val))?0:Math.round(val);
+  const cls=done||v>=90?'done':(v>0?'wip':'');
+  return '<span class="mchip '+cls+'">'+name+' '+(done||v>=90?'✓ ':'')+v+'%</span>';
+}
+function mbar(name,val){
+  const v=(val==null||isNaN(val))?0:Math.round(val);
+  return '<div class="mbar"><div class="lbl"><span>'+name+'</span><span>'+v+'%</span></div>'
+    +'<div class="bar"><i style="width:'+v+'%"></i></div></div>';
 }
 document.getElementById('btnError').onclick=()=>{errMode=true;setView('study');};
 document.getElementById('errExit').onclick=()=>{errMode=false;sRender();};
 document.getElementById('setNew').onchange=e=>{S.settings.dailyNew=+e.target.value;save();refreshAll();};
+document.getElementById('setStrict').onchange=e=>{S.settings.strict=e.target.value==='1';save();checkLock(view);};
 document.getElementById('btnExport').onclick=()=>{
   const b=new Blob([JSON.stringify(S)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(b);
-  a.download='历史复习进度.json';a.click();
+  a.download='历史复习进度V2.json';a.click();
 };
 document.getElementById('btnImport').onclick=()=>document.getElementById('fileIn').click();
 document.getElementById('fileIn').onchange=e=>{
@@ -617,10 +1071,52 @@ document.getElementById('fileIn').onchange=e=>{
 };
 document.getElementById('btnReset').onclick=()=>{
   if(confirm('确定清空所有进度？建议先导出备份。')){
-    S={cards:{},settings:{dailyNew:20},day:today(),todayNew:0,log:{},streak:0,lastDay:0};
-    S.settings.theme=S.settings.theme||'light';errMode=false;save();applyTheme();refreshAll();}
+    S=blank();S.settings.theme=S.settings.theme||'light';errMode=false;save();applyTheme();refreshAll();}
 };
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+/* ---------- 家长抽查 ---------- */
+let auditQueue=[],auditIdx=0,auditRevealed=false;
+document.getElementById('btnAudit').onclick=()=>{
+  const week=S.selfLog.filter(x=>today()-x.day<7);
+  if(!week.length){alert('近 7 天没有自评「全会了」的记录，暂时无可抽查项。');return;}
+  auditQueue=pick(week,5);auditIdx=0;
+  document.getElementById('auditPanel').innerHTML='';
+  renderAuditQ();
+};
+function renderAuditQ(){
+  if(auditIdx>=auditQueue.length){renderAudit();document.getElementById('auditPanel').innerHTML='<div class="note">本轮抽查完成，结果已计入掌握度。</div>';return;}
+  const it=auditQueue[auditIdx];auditRevealed=false;
+  let q,ans;
+  if(it.lv==='l1'){
+    const b=+it.id.split('-')[0].slice(1);
+    q='第'+CN[b]+'册有哪几个单元？';
+    ans=unitListItems(b,'');
+  }else{
+    const l=LMAP[it.id],u=UMAP['B'+l.book+'-U'+l.unit];
+    q='第'+CN[l.book]+'册第'+CN[u.no]+'单元（'+esc(u.name)+'）有哪几课？';
+    ans=lessonListItems(u.id,'');
+  }
+  document.getElementById('auditPanel').innerHTML=
+    '<div class="card" style="border-style:dashed"><div class="qhint">抽查 '+(auditIdx+1)+' / '+auditQueue.length+'（只给孩子口头回答）</div>'
+    +'<div class="big" style="font-size:19px">'+q+'</div>'
+    +'<div id="auditAns" class="hidden">'+ans+'</div>'
+    +'<div class="row" id="auditBtns"><button class="btn" id="auditShow">显示答案核对</button></div></div>';
+  document.getElementById('auditShow').onclick=()=>{
+    document.getElementById('auditAns').classList.remove('hidden');
+    document.getElementById('auditBtns').innerHTML=
+      '<button class="btn g2" id="auditYes">✓ 真会</button><button class="btn g0" id="auditNo">✗ 不会</button>';
+    document.getElementById('auditYes').onclick=()=>auditMark(true);
+    document.getElementById('auditNo').onclick=()=>auditMark(false);
+  };
+}
+function auditMark(pass){
+  const it=auditQueue[auditIdx];
+  if(pass){S.audit.p++;if(it.lv==='l1')mApply(S.um,it.id,5,false);else mApply(S.lm,it.id,5,false);}
+  else{S.audit.f++;if(it.lv==='l1'){S.um[it.id]={s:0,ls:today(),lap:(mGet(S.um,it.id).lap||0)+1};}
+       else{S.lm[it.id]={s:0,ls:today(),lap:(mGet(S.lm,it.id).lap||0)+1};}}
+  save();auditIdx++;renderAuditQ();paintBadges();
+}
+function renderAudit(){}
 
 /* ---------- 启动 ---------- */
 rollDay();applyTheme();buildFilters();refreshAll();sRender();
