@@ -728,7 +728,7 @@ function showPortal(v){
     genCount(v) {
       if (v === 'custom') { S.gen.custom = String(S.gen.count); S.gen.count = 20; }
       else { S.gen.custom = ''; S.gen.count = Number(v); }
-      render();
+      App.regenerate();
     },
     genCustom(v) { S.gen.custom = v; App.regenerate(); },
     genStar(v) { S.gen.star = Number(v); App.regenerate(); },
