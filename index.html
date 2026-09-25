@@ -595,12 +595,12 @@ function showPortal(v){
               <span class="idx">${i + 1}</span>
               <span class="zh">${esc(w.zh)}</span>
               <span class="en">${esc(w.en)} <span class="tag ${TYPE_COLOR[w.tag]}">${w.tag}</span></span>
-              <button class="btn ghost small" onclick="App.replaceOne(${i})">换</button>
+              ${c.order === 'seq' ? '' : `<button class="btn ghost small" onclick="App.replaceOne(${i})">换</button>`}
             </div>`).join('') || '<div class="empty">没有可生成的单词</div>'}
         </div>
         <div class="row">
-          <button class="btn ghost" style="flex:1" onclick="App.regenerate()">换一批</button>
-          <button class="btn" style="flex:2" ${g.preview.length ? '' : 'disabled'} onclick="App.submitSheet(event)">生成默写卷（Excel）</button>
+          ${c.order === 'seq' ? '' : '<button class="btn ghost" style="flex:1" onclick="App.regenerate()">换一批</button>'}
+          <button class="btn" style="flex:${c.order === 'seq' ? 3 : 2}" ${g.preview.length ? '' : 'disabled'} onclick="App.submitSheet(event)">生成默写卷（Excel）</button>
         </div>
       </div>`;
   };
