@@ -489,6 +489,7 @@ function showPortal(v){
               <div>${esc(c.name)}</div>
               <div class="sub">${esc(c.book_name)} · ${c.order === 'seq' ? '词库顺序' : '随机出题'} · 建于 ${fmtDate(c.created_at)}</div>
             </div>
+            <button class="btn ghost small" onclick="event.stopPropagation();App.deleteCycle('${c._id}')">删除</button>
             <span class="sub">›</span>
           </div>`).join('') : '<div class="empty">还没有周期，点上方按钮创建一个吧</div>'}
       </div>
@@ -717,6 +718,20 @@ function showPortal(v){
     },
 
     openCycle(id) { S.cycleId = id; S.notebookTab = 'A'; go('notebook'); },
+    deleteCycle(id) {
+      const c = byId(store.get('cycles'), id);
+      if (!c) return;
+      const marks = store.get('marks').filter(m => m.cycle_id === id).length;
+      const sheets = store.get('sheets').filter(s => s.cycle_id === id).length;
+      const extra = marks + sheets ? `，包括 ${marks} 条打标记录和 ${sheets} 张默写卷` : '';
+      if (!confirm(`确定删除周期「${c.name}」？该周期的打标进度将一并删除${extra}，删除后不可恢复。`)) return;
+      store.set('cycles', store.get('cycles').filter(x => x._id !== id));
+      store.set('marks', store.get('marks').filter(m => m.cycle_id !== id));
+      store.set('sheets', store.get('sheets').filter(s => s.cycle_id !== id));
+      if (S.cycleId === id) S.cycleId = '';
+      toast(`已删除周期「${c.name}」`);
+      render();
+    },
     notebookTab(t) { S.notebookTab = t; render(); },
 
     goGenerate(type) {
