@@ -442,7 +442,7 @@ function showPortal(v){
   /* ---------------- 视图状态 ---------------- */
   const TYPE_NAMES = { A: 'A 类卷 · 默写新词', B: 'B 类卷 · 复习（B+C 混合）', C: 'C 类卷 · 复习（仅 C 词）' };
   const TYPE_TIPS = {
-    A: '默写完成后在卷详情逐词打标：认识的词打 B，进入 B 类复习卷。A 类卷每词每周期只出一次。',
+    A: '默写完成后在卷详情逐词打标：要复习的词打 B，进入 B 类复习卷。A 类卷每词每周期只出一次。',
     B: '本次默对的词可打 C，进入 C 类复习卷。',
     C: 'C 为终态卷，无打标操作，可反复练习。'
   };
@@ -487,7 +487,7 @@ function showPortal(v){
           <div class="cycle-item" onclick="App.openCycle('${c._id}')">
             <div>
               <div>${esc(c.name)}</div>
-              <div class="sub">${esc(c.book_name)} · 建于 ${fmtDate(c.created_at)}</div>
+              <div class="sub">${esc(c.book_name)} · ${c.order === 'seq' ? '词库顺序' : '随机出题'} · 建于 ${fmtDate(c.created_at)}</div>
             </div>
             <span class="sub">›</span>
           </div>`).join('') : '<div class="empty">还没有周期，点上方按钮创建一个吧</div>'}
@@ -508,8 +508,14 @@ function showPortal(v){
         <label class="field"><span>词库（固定内置）</span>
           <select disabled><option>${esc(book.name)}</option></select>
         </label>
+        <label class="field"><span>出题顺序</span>
+          <select onchange="App.setCreateOrder(this.value)">
+            <option value="random" ${(S.createOrder || 'random') === 'random' ? 'selected' : ''}>随机出题（每次打乱）</option>
+            <option value="seq" ${(S.createOrder || 'random') === 'seq' ? 'selected' : ''}>词库顺序（按词表从头出）</option>
+          </select>
+        </label>
         <button class="btn block" onclick="App.createCycle()">创建周期</button>
-        <p class="sub" style="margin-top:10px">周期创建后不会删除也不会重置，A/B/C 打标进度随周期永久保留；多周期可并行。</p>
+        <p class="sub" style="margin-top:10px">周期创建后不会删除也不会重置，A/B/C 打标进度随周期永久保留；出题顺序创建后不可更改；多周期可并行。</p>
       </div>`;
   };
 
@@ -698,11 +704,13 @@ function showPortal(v){
     goCreate() { go('create'); },
     goMine() { go('mine'); },
 
+    setCreateOrder(v) { S.createOrder = v; render(); },
+
     createCycle() {
       const name = (document.getElementById('cycleName').value || '').trim();
       if (!name) { toast('请给周期起个名字'); return; }
       const cycles = store.get('cycles');
-      cycles.push({ _id: uid(), name, book_id: book._id, book_type: 'builtin', book_name: book.name, created_at: Date.now() });
+      cycles.push({ _id: uid(), name, book_id: book._id, book_type: 'builtin', book_name: book.name, order: S.createOrder || 'random', created_at: Date.now() });
       store.set('cycles', cycles);
       toast('已创建');
       S.view = 'home'; S.stack = []; render();
@@ -729,14 +737,18 @@ function showPortal(v){
       let pool = poolFor(list, S.genType);
       if (S.gen.star > 0) pool = pool.filter(w => w.star === S.gen.star);
       const count = S.gen.custom ? Math.min(Math.max(parseInt(S.gen.custom, 10) || 20, 1), 100) : S.gen.count;
-      S.gen.preview = sample(pool, count).map(w => ({ _id: w._id, en: w.en, zh: w.zh, star: w.star, tag: w.tag }));
+      const seq = (currentCycle() || {}).order === 'seq';
+      S.gen.preview = (seq ? pool.slice(0, count) : sample(pool, count)).map(w => ({ _id: w._id, en: w.en, zh: w.zh, star: w.star, tag: w.tag }));
       render();
     },
     replaceOne(i) {
       const list = decorateAll(S.cycleId);
       let pool = poolFor(list, S.genType);
       if (S.gen.star > 0) pool = pool.filter(w => w.star === S.gen.star);
-      const pick = pickDifferent(pool, S.gen.preview);
+      const seq = (currentCycle() || {}).order === 'seq';
+      const pick = seq
+        ? pool.find(w => !S.gen.preview.some(p => p._id === w._id))
+        : pickDifferent(pool, S.gen.preview);
       if (!pick) { toast('池中没有可替换的词了'); return; }
       S.gen.preview[i] = { _id: pick._id, en: pick.en, zh: pick.zh, star: pick.star, tag: pick.tag };
       render();
