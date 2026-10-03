@@ -208,8 +208,8 @@ body[data-app="word"]{background:#f2f4f7}
   <section id="v-sim" class="hidden">
     <div class="meta"><span id="mProgress"></span><span id="mScore"></span></div>
     <div class="card" id="mCard"></div>
-    <div class="row"><button class="btn" id="mStart">开始模拟（10题，全程计时）</button></div>
-    <div class="note">模拟考试的完整动作：看到一个关键词，依次选出<b>册 → 单元 → 课</b>。计时不在答题时显示，做完才公布——别慌，练的就是这条路径。</div>
+    <div class="row"><button class="btn" id="mStart">开始模拟（10题）</button></div>
+    <div class="note">模拟考试的完整动作：看到一个关键词，依次选出<b>册 → 单元 → 课</b>。答错了不要急，页面会给出正确答案，看明白、记一记再点「下一题」。</div>
   </section>
 
   <!-- 检索 -->
@@ -1456,23 +1456,21 @@ document.getElementById('lSubmit').onclick=()=>{
 document.getElementById('lNext').onclick=()=>{li++;lRender();};
 
 /* ================= 综合模拟 ================= */
-let mq=[],mi=0,mOK=0,mDone=0,mStep=0,mAns=null,mT0=0,mTimes=[],mCur=null;
+let mq=[],mi=0,mOK=0,mDone=0,mStep=0,mAns=null,mCur=null,mLock=false;
 document.getElementById('mStart').onclick=()=>{
   mq=pick(ATOMS.filter(inScope).length?ATOMS.filter(inScope):ATOMS,10);
-  mi=0;mOK=0;mDone=0;mTimes=[];mRender();
+  mi=0;mOK=0;mDone=0;mRender();
 };
 function mRender(){
   if(mi>=mq.length){
     const acc=mDone?Math.round(mOK/mDone*100):0;
-    const avg=mTimes.length?(mTimes.reduce((a,b)=>a+b,0)/mTimes.length):0;
-    let h='<div class="big">模拟完成：'+mOK+' / '+mDone+' · 平均 '+avg.toFixed(1)+' 秒</div>';
-    h+=simCurve(mTimes);
+    let h='<div class="big">模拟完成：'+mOK+' / '+mDone+'</div>';
     h+='<div class="qhint">'+(acc>=90?'路径已经长在脑子里了，保持每周 1-2 次。':'错的题回到「定位」和「L2」补一补对应单元。')+'</div>';
     document.getElementById('mCard').innerHTML=h;
     document.getElementById('mProgress').textContent='';document.getElementById('mScore').textContent='';
     return;
   }
-  mCur=mq[mi];mStep=0;mT0=Date.now();
+  mCur=mq[mi];mStep=0;mLock=false;
   const l=LMAP[mCur.lid];
   document.getElementById('mProgress').textContent='第 '+(mi+1)+' / '+mq.length+' 题';
   document.getElementById('mScore').textContent='本组 '+mOK+' / '+mDone;
@@ -1499,19 +1497,21 @@ function mRenderLessons(){
   document.getElementById('mOpts').querySelectorAll('.btn').forEach(b=>b.onclick=()=>mPick(3,b));
 }
 function mPick(step,btn){
-  if(btn.classList.contains('correct'))return;
+  if(mLock||btn.classList.contains('correct'))return;
   const l=LMAP[mCur.lid];
   let ok=false;
   if(step===1){ok=+btn.dataset.b===l.book;mAns={book:l.book};}
   if(step===2){ok=btn.dataset.u==='B'+l.book+'-U'+l.unit;}
   if(step===3){ok=btn.dataset.l===l.id;}
-  const secs=(Date.now()-mT0)/1000;
   if(!ok){
+    mLock=true;
     btn.classList.add('wrong');
-    document.getElementById('mFB').innerHTML='<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 第'+step+'步错了 · 耗时 '+secs.toFixed(1)+' 秒</div>'
-      +'<div class="path" style="margin-top:6px">'+lessonPath(l)+'</div>'+itemList(l.kws,mCur.idx);
+    document.getElementById('mFB').innerHTML='<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 第'+step+'步错了，正确答案是：</div>'
+      +'<div class="path" style="margin-top:6px">'+lessonPath(l)+'</div>'+itemList(l.kws,mCur.idx)
+      +'<div class="qhint" style="margin-top:10px">先看明白这条路径，记一记再继续。</div>'
+      +'<div class="row" style="margin-top:10px"><button class="btn" id="mNext">下一题 ›</button></div>';
     mDone++;review(mCur.k,0);
-    setTimeout(()=>{mi++;mRender();},1400);
+    document.getElementById('mNext').onclick=()=>{mi++;mRender();};
     return;
   }
   btn.classList.add('correct');
@@ -1523,28 +1523,11 @@ function mPick(step,btn){
     document.getElementById('mFB').innerHTML='<div class="simstep">✓ '+esc(UMAP['B'+l.book+'-U'+l.unit].name)+' · 第 3 步 <b>选课</b></div>';
     mRenderLessons();
   }else{
-    const done=(Date.now()-mT0)/1000;
-    document.getElementById('mFB').innerHTML='<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 完整路径 '+lessonPath(l)+' · 耗时 '+done.toFixed(1)+' 秒</div>';
-    mDone++;mOK++;mTimes.push(done);review(mCur.k,2);
+    document.getElementById('mFB').innerHTML='<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 完整路径 '+lessonPath(l)+'</div>';
+    mDone++;mOK++;review(mCur.k,2);
     setTimeout(()=>{mi++;mRender();},1100);
   }
   paintBadges();
-}
-function simCurve(times){
-  if(!times.length)return '';
-  const W=680,H=120,pad=24,max=Math.max(...times,5);
-  const pts=times.map((t,i)=>{
-    const x=pad+i*(W-2*pad)/Math.max(1,times.length-1);
-    const y=H-pad-(t/max)*(H-2*pad);
-    return [x.toFixed(1),y.toFixed(1),t.toFixed(1)];
-  });
-  let svg='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;background:var(--chip);border-radius:10px;margin-top:10px">';
-  svg+='<polyline points="'+pts.map(p=>p[0]+','+p[1]).join(' ')+'" fill="none" stroke="var(--red)" stroke-width="2"/>';
-  pts.forEach((p,i)=>{svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3.5" fill="var(--red)"/>';
-    svg+='<text x="'+p[0]+'" y="'+(H-6)+'" font-size="10" fill="var(--sub)" text-anchor="middle">'+(i+1)+'</text>';
-    svg+='<text x="'+p[0]+'" y="'+(+p[1]-8)+'" font-size="10" fill="var(--ink)" text-anchor="middle">'+p[2]+'s</text>';});
-  svg+='</svg>';
-  return svg;
 }
 
 /* ================= 检索 / 打印 ================= */
