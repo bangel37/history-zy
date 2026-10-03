@@ -115,7 +115,7 @@ body[data-app="word"]{background:#f2f4f7}
     <span class="go">进入 ›</span>
   </div>
 </div>
-<footer>学习进度保存在浏览器本地，两个工具互不影响 · 版本 v2.4 · 构建于 2026/10/3 16:33:29</footer>
+<footer>学习进度保存在浏览器本地，两个工具互不影响 · 版本 v2.5 · 构建于 2026/10/3 16:45:35</footer>
 </div>
 <div id="p-word" style="display:none">
 <div class="navbar">
@@ -1504,14 +1504,9 @@ function mPick(step,btn){
   if(step===2){ok=btn.dataset.u==='B'+l.book+'-U'+l.unit;}
   if(step===3){ok=btn.dataset.l===l.id;}
   if(!ok){
-    mLock=true;
+    // 中途答错：定格本题，展示正确答案供学习
     btn.classList.add('wrong');
-    document.getElementById('mFB').innerHTML='<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 第'+step+'步错了，正确答案是：</div>'
-      +'<div class="path" style="margin-top:6px">'+lessonPath(l)+'</div>'+itemList(l.kws,mCur.idx)
-      +'<div class="qhint" style="margin-top:10px">先看明白这条路径，记一记再继续。</div>'
-      +'<div class="row" style="margin-top:10px"><button class="btn" id="mNext">下一题 ›</button></div>';
-    mDone++;review(mCur.k,0);
-    document.getElementById('mNext').onclick=()=>{mi++;mRender();};
+    mEndQuestion(false,step);
     return;
   }
   btn.classList.add('correct');
@@ -1523,10 +1518,28 @@ function mPick(step,btn){
     document.getElementById('mFB').innerHTML='<div class="simstep">✓ '+esc(UMAP['B'+l.book+'-U'+l.unit].name)+' · 第 3 步 <b>选课</b></div>';
     mRenderLessons();
   }else{
-    document.getElementById('mFB').innerHTML='<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 完整路径 '+lessonPath(l)+'</div>';
-    mDone++;mOK++;review(mCur.k,2);
-    setTimeout(()=>{mi++;mRender();},1100);
+    // 三步全部答对：同样定格，等用户点「下一题」
+    mEndQuestion(true,3);
   }
+  paintBadges();
+}
+// 一题结束：展示正确答案 + 关键词，等用户手动点「下一题」
+function mEndQuestion(ok,step){
+  mLock=true;
+  const l=LMAP[mCur.lid];
+  const last=(mi>=mq.length-1);
+  const head=ok
+    ? '<div style="color:var(--green);font-weight:600;margin-top:12px">✓ 完全正确！完整路径：</div>'
+    : '<div style="color:var(--red);font-weight:600;margin-top:12px">✗ 第'+step+'步错了，正确答案是：</div>';
+  document.getElementById('mFB').innerHTML=head
+    +'<div class="path" style="margin-top:6px">'+lessonPath(l)+'</div>'
+    +itemList(l.kws,mCur.idx)
+    +'<div class="qhint" style="margin-top:10px">'+(ok?'记住了就继续。':'先看明白这条路径，记一记再继续。')+'</div>'
+    +'<div class="row" style="margin-top:10px"><button class="btn" id="mNext">'+(last?'查看本次结果':'下一题 ›')+'</button></div>';
+  mDone++; if(ok)mOK++;
+  review(mCur.k,ok?2:0);
+  document.getElementById('mScore').textContent='本组 '+mOK+' / '+mDone;
+  document.getElementById('mNext').onclick=()=>{mi++;mRender();};
   paintBadges();
 }
 
